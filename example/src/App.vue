@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import RenderToIFrame from './components/RenderToIFrame'
+import RenderToIFrame from './components/RenderToIframe.vue'
 import {
   VueginateCore,
   VueginateBootstrap,
