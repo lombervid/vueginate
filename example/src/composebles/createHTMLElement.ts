@@ -1,16 +1,26 @@
-const templates = {
-  bootstrap: {
-    type: 'link',
-    source: 'https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css'
-  },
-  bulma: {
-    type: 'link',
-    source: 'https://cdn.jsdelivr.net/npm/bulma@0/css/bulma.min.css'
-  },
-  tailwind: {
-    type: 'script',
-    source: 'https://cdn.tailwindcss.com'
+import { ElementType, ElementStyle, SourceType } from '../types'
+
+function createHTMLTemplateElement(
+  type: ElementType,
+  content: string,
+  style: ElementStyle = 'source'
+) {
+  const element = document.createElement(type)
+
+  if (style === 'inline') {
+    element.innerHTML = content
+  } else {
+    if (element instanceof HTMLLinkElement) {
+      // type === 'link'
+      element.rel = 'stylesheet'
+      element.href = content
+    } else if (element instanceof HTMLScriptElement) {
+      // type === 'script'
+      element.src = content
+    }
   }
+
+  return element
 }
 
 export function useCreateHTMLElement() {
@@ -18,31 +28,18 @@ export function useCreateHTMLElement() {
     return new Promise((resolve) => setTimeout(resolve, ms))
   }
 
-  function createTemplateElement(template) {
-    const name = templates[template] ?? null
-
-    if (!name) {
+  async function createTemplateElement(template: SourceType) {
+    if (!template) {
       return null
     }
 
-    const el = document.createElement(name.type)
+    const content =
+      template.source.type === 'inline' && typeof template.source.content === 'function'
+        ? await template.source.content()
+        : template.source.content
 
-    if (name.type === 'link') {
-      el.href = name.source
-      el.rel = 'stylesheet'
-    } else if (name.type === 'script') {
-      el.src = name.source
-    }
-
-    return el
+    return createHTMLTemplateElement(template.type, content.toString(), template.source.type)
   }
 
-  function createInlineStyleElement(content: string) {
-    const element = document.createElement('style')
-    element.innerHTML = content
-
-    return element
-  }
-
-  return { sleep, createTemplateElement, createInlineStyleElement }
+  return { sleep, createTemplateElement }
 }

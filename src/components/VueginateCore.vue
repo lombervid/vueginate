@@ -74,14 +74,30 @@ function htmlEntity(name: HTMLEntitiesKey, unicode: boolean = false): string {
 </template>
 
 <style>
-/* @tailwind base; */
-/* @tailwind utilities; */
+.pagination,
+.pagination * {
+  @apply box-border;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
 
 .pagination {
+  @apply list-none;
   @apply flex select-none justify-center gap-1 text-xs font-medium text-gray-600;
 }
 
 .pagination .page-item {
+  @apply border-solid text-inherit decoration-inherit;
   @apply block h-8 w-8 rounded border border-gray-300 text-center leading-8;
 }
 .pagination .page-item:hover:not(.active):not(.disabled) {
@@ -89,7 +105,6 @@ function htmlEntity(name: HTMLEntitiesKey, unicode: boolean = false): string {
 }
 .pagination .page-item.active {
   @apply border-blue-500 bg-blue-50 text-blue-600;
-  /* @apply border-violet-500 bg-violet-50 text-violet-600; */
 }
 .pagination .page-item.disabled {
   @apply bg-gray-200 opacity-50;
