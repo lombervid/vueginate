@@ -1,21 +1,63 @@
 <script setup lang="ts">
 import RenderToIFrame from './components/RenderToIframe.vue'
-import {
-  VueginateCore,
-  VueginateBootstrap,
-  VueginateBulma,
-  VueginateTailwind
-} from '../../dist/vueginate.js'
+// import {
+//   VueginateCore,
+//   VueginateBootstrap,
+//   VueginateBulma,
+//   VueginateTailwind
+// } from '../../dist/vueginate.js'
+
+import VueginateCore from '../../src/components/VueginateCore.vue'
+
+import { reactive } from 'vue'
 
 const coreStyle = async (): Promise<string> => {
   return (await import('../../dist/style.css')).default.toString()
 }
+
+function change(page: number) {
+  console.log('yeyyy', page)
+  data.current = page
+}
+
+const data = reactive({
+  total: 16,
+  current: 9,
+  perPage: 1
+})
 </script>
 
 <template>
   <h1>Vueginate example</h1>
 
   <RenderToIFrame
+    :type="{
+      type: 'style',
+      source: {
+        type: 'inline',
+        content: coreStyle
+      }
+    }"
+  >
+    <h1 style="text-align: center; border-bottom: 2px solid #171; padding-bottom: 1.25rem">
+      Tailwind Core
+    </h1>
+
+    <VueginateCore
+      :total-items="data.total"
+      :current-page="data.current"
+      :items-per-page="data.perPage"
+      visible-always
+      @page-change="change"
+    >
+      <template #previous></template>
+      <template #item></template>
+      <template #active></template>
+      <template #ellipsis></template>
+    </VueginateCore>
+  </RenderToIFrame>
+
+  <!-- <RenderToIFrame
     :type="{
       type: 'style',
       source: {
@@ -77,7 +119,7 @@ const coreStyle = async (): Promise<string> => {
     </h1>
 
     <VueginateBulma />
-  </RenderToIFrame>
+  </RenderToIFrame> -->
 </template>
 
 <style scoped>

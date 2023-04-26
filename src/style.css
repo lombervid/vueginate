@@ -1,0 +1,41 @@
+.pagination,
+.pagination * {
+  @apply box-border;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.pagination {
+  @apply list-none;
+  @apply flex select-none justify-center gap-1 text-xs font-medium text-gray-600;
+}
+
+.pagination .page-item {
+  @apply cursor-pointer;
+  @apply border-solid text-inherit no-underline decoration-inherit;
+  @apply block h-8 w-8 rounded border border-gray-300 text-center leading-8;
+}
+.pagination .page-item:hover:not(.active):not(.disabled) {
+  @apply border-gray-400 bg-gray-50;
+}
+.pagination .page-item.active {
+  @apply cursor-default;
+  @apply border-blue-500 bg-blue-50 text-blue-600;
+}
+.pagination .page-item.disabled {
+  @apply cursor-default;
+  @apply bg-gray-200 opacity-50;
+}
+.pagination .page-item.ellipsis {
+  @apply inline-flex  items-center justify-center p-2;
+}

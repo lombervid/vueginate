@@ -8,6 +8,7 @@
   ],
   "main": "./dist/vueginate.umd.cjs",
   "module": "./dist/vueginate.js",
+  "style": "./dist/style.css",
   "exports": {
     ".": {
       "import": "./dist/vueginate.js",

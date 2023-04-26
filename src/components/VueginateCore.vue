@@ -1,115 +1,228 @@
 <script setup lang="ts">
-import PreviousIcon from './Icons/PreviousIcon.vue'
+import { computed, warn } from 'vue'
 import NextIcon from './Icons/NextIcon.vue'
+import PreviousIcon from './Icons/PreviousIcon.vue'
+import '../style.css'
 
-type HTMLEntitiesKey = keyof typeof HTMLEntities
+Math.trunc =
+  Math.trunc ||
+  function (x) {
+    return x < 0 ? Math.ceil(x) : Math.floor(x)
+  }
 
-const HTMLEntities = {
-  ellipsis: {
-    unicode: '&#8230;',
-    alphanumeric: '&hellip;'
-  },
-  lquot: {
-    unicode: '&#171;',
-    alphanumeric: '&laquo;'
-  },
-  rquot: {
-    unicode: '&#187;',
-    alphanumeric: '&raquo;'
+enum PageType {
+  Page = 'page',
+  Ellipsis = 'ellipsis',
+  Current = 'current'
+}
+
+class PageInfo {
+  readonly number: number
+  readonly type: PageType
+
+  constructor(number: number, type: PageType) {
+    this.number = type === PageType.Ellipsis ? 0 : number
+    this.type = type
+  }
+
+  isCurrent(): boolean {
+    return this.type === PageType.Current
+  }
+
+  isEllipsis(): boolean {
+    return this.type === PageType.Ellipsis
+  }
+
+  isPage(): boolean {
+    return this.type === PageType.Page
   }
 }
 
-function htmlEntity(name: HTMLEntitiesKey, unicode: boolean = false): string {
-  let character = HTMLEntities[name] ?? null
+const emits = defineEmits<{
+  (e: 'pageChange', page: number): void
+}>()
 
-  if (!character) {
-    return ''
+const props = defineProps({
+  totalItems: {
+    type: Number,
+    required: true,
+    validator(value: number) {
+      return Number.isInteger(value) && value >= 0
+    }
+  },
+  currentPage: {
+    type: Number,
+    required: true,
+    validator(value: number) {
+      return Number.isInteger(value) && value > 0
+    }
+  },
+  itemsPerPage: {
+    type: Number,
+    required: true,
+    validator(value: number) {
+      return Number.isInteger(value) && value > 0
+    }
+  },
+  pagesToShow: {
+    type: Number,
+    default: 2,
+    validator(value: number) {
+      return Number.isInteger(value) && value >= -1
+    }
+  },
+  visibleAlways: {
+    type: Boolean
+  }
+})
+
+const totalPages = computed(() => {
+  const totalItems = Math.trunc(props.totalItems)
+  const itemsPerPage = Math.trunc(props.itemsPerPage)
+  const total = Math.trunc(totalItems / itemsPerPage)
+
+  return totalItems % itemsPerPage === 0 ? total : total + 1
+})
+
+const toShow = computed(() => Math.trunc(props.pagesToShow))
+const currentPage = computed(() => {
+  const currentPage = Math.trunc(props.currentPage)
+
+  if (currentPage < 1) {
+    return 1
   }
 
-  return unicode ? character.unicode : character.alphanumeric
+  if (currentPage > totalPages.value) {
+    warn('`currentPage` should not be greater than the total number of pages')
+    return totalPages.value
+  }
+
+  return currentPage
+})
+const isFirstPage = computed(() => currentPage.value <= 1)
+const isLastPage = computed(() => currentPage.value >= totalPages.value)
+
+const nextPage = computed(() => {
+  return isLastPage.value ? currentPage.value : currentPage.value + 1
+})
+const previousPage = computed(() => {
+  return isFirstPage.value ? currentPage.value : currentPage.value - 1
+})
+
+const pages = computed<PageInfo[]>(() => {
+  const pages: PageInfo[] = []
+
+  for (let i = 1; i <= totalPages.value; i++) {
+    const page = new PageInfo(i, getPageType(i))
+
+    if (page.isEllipsis()) {
+      const next =
+        i < currentPage.value ? currentPage.value - (toShow.value + 1) : totalPages.value - 1
+
+      if (i < next) {
+        i = next
+      }
+    }
+
+    pages.push(page)
+  }
+
+  return pages
+})
+
+function getPageType(page: number): PageType {
+  if (isCurrentPage(page)) {
+    return PageType.Current
+  }
+
+  if (isEllipsis(page)) {
+    return PageType.Ellipsis
+  }
+
+  return PageType.Page
 }
+
+function isCurrentPage(page: number) {
+  return page === currentPage.value
+}
+
+function isEllipsis(page: number) {
+  if (toShow.value < 0) {
+    return false
+  }
+
+  if (page < currentPage.value) {
+    const nextPage = currentPage.value - toShow.value
+
+    return (page === 2 && nextPage > 3) || (page > 2 && page < nextPage)
+  }
+
+  const lastPage = currentPage.value + toShow.value
+
+  return (
+    (page === lastPage + 1 && page < totalPages.value - 1) ||
+    (page > lastPage + 1 && page < totalPages.value)
+  )
+}
+
+function changePage(page: number) {
+  if (page < 1 || page > totalPages.value || page === currentPage.value) {
+    return
+  }
+
+  emits('pageChange', page)
+}
+
+const showComponent = computed(() => props.visibleAlways || totalPages.value > 1)
 </script>
 <template>
-  <nav aria-label="Page navigation">
+  <nav v-if="showComponent" aria-label="Page navigation">
     <ul class="pagination">
-      <li>
-        <a href="#" class="page-item arrow">
-          <span class="sr-only">Prev Page</span>
-          <PreviousIcon />
-        </a>
-      </li>
-      <li>
-        <a href="#" class="page-item"> 1 </a>
-      </li>
-      <li>
-        <span class="page-item disabled" v-html="htmlEntity('ellipsis', true)"></span>
-      </li>
-      <li>
-        <a href="#" class="page-item"> 13 </a>
-      </li>
-      <li>
-        <a href="#" class="page-item"> 14 </a>
-      </li>
-      <li class="page-item active">15</li>
-      <li>
-        <a href="#" class="page-item"> 16 </a>
-      </li>
-      <li>
-        <a href="#" class="page-item"> 17 </a>
-      </li>
-      <li>
-        <span class="page-item disabled"> ... </span>
-      </li>
-      <li>
-        <a href="#" class="page-item"> 30 </a>
-      </li>
-      <li>
-        <a href="#" class="page-item arrow">
-          <span class="sr-only">Next Page</span>
-          <NextIcon />
-        </a>
-      </li>
+      <slot name="previous" :page="{ first: isFirstPage, next: previousPage }">
+        <li>
+          <span v-if="isFirstPage" class="page-item ellipsis disabled">
+            <span class="sr-only">Prev Page</span>
+            <PreviousIcon />
+          </span>
+          <a v-else @click.prevent="changePage(previousPage)" class="page-item ellipsis">
+            <span class="sr-only">Prev Page</span>
+            <PreviousIcon />
+          </a>
+        </li>
+      </slot>
+
+      <template v-for="page in pages" :key="page">
+        <slot v-if="page.isEllipsis()" name="ellipsis">
+          <li>
+            <span class="page-item disabled">&#8230;</span>
+          </li>
+        </slot>
+
+        <slot v-else-if="page.isCurrent()" name="active">
+          <li>
+            <span class="page-item active">{{ page.number }}</span>
+          </li>
+        </slot>
+
+        <slot v-else name="item">
+          <li>
+            <a @click.prevent="changePage(page.number)" class="page-item"> {{ page.number }} </a>
+          </li>
+        </slot>
+      </template>
+
+      <slot name="next" :page="{ last: isLastPage, next: nextPage }">
+        <li>
+          <span v-if="isLastPage" class="page-item ellipsis disabled">
+            <span class="sr-only">Next Page</span>
+            <NextIcon />
+          </span>
+          <a v-else @click.prevent="changePage(nextPage)" class="page-item ellipsis">
+            <span class="sr-only">Next Page</span>
+            <NextIcon />
+          </a>
+        </li>
+      </slot>
     </ul>
   </nav>
 </template>
-
-<style>
-.pagination,
-.pagination * {
-  @apply box-border;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-.pagination {
-  @apply list-none;
-  @apply flex select-none justify-center gap-1 text-xs font-medium text-gray-600;
-}
-
-.pagination .page-item {
-  @apply border-solid text-inherit decoration-inherit;
-  @apply block h-8 w-8 rounded border border-gray-300 text-center leading-8;
-}
-.pagination .page-item:hover:not(.active):not(.disabled) {
-  @apply border-gray-400 bg-gray-50;
-}
-.pagination .page-item.active {
-  @apply border-blue-500 bg-blue-50 text-blue-600;
-}
-.pagination .page-item.disabled {
-  @apply bg-gray-200 opacity-50;
-}
-.pagination .page-item.arrow {
-  @apply inline-flex  items-center justify-center p-2;
-}
-</style>
