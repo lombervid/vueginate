@@ -21,7 +21,7 @@ const data = reactive({
 </script>
 
 <template>
-  <h1>Vueginate example</h1>
+  <h1>Vueginate demo</h1>
 
   <RenderToIFrame
     :type="{

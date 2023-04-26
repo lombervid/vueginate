@@ -29,6 +29,6 @@ export default defineConfig({
     }
   },
   css: {
-    postcss: './example'
+    postcss: './demo'
   }
 })

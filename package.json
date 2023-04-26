@@ -16,14 +16,14 @@
     }
   },
   "scripts": {
-    "dev": "vite example --config ./vite.config.ts",
+    "dev": "vite demo --config ./vite.config.ts",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write lib/ example/src/"
+    "format": "prettier --write lib/ demo/src/"
   },
   "peerDependencies": {
     "vue": "^3.2.47"
