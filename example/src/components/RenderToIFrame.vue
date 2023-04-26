@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { ref, createApp, onMounted, useSlots } from 'vue'
+import { createApp, onMounted, ref, useSlots } from 'vue'
 import { useCreateHTMLElement } from '../composebles/createHTMLElement'
-
-import { SourceType } from '../types'
+import type { SourceType } from '../types'
 
 // https://codesandbox.io/s/hf1fe?file=/src/components/RenderToIFrame.js
 
@@ -12,9 +11,9 @@ const props = defineProps<{
   type: SourceType
 }>()
 
-const iframeRef = ref(null)
-const iframeBody = ref(null)
-const iframeHead = ref(null)
+const iframeRef = ref<HTMLIFrameElement | null>(null)
+const iframeBody = ref<HTMLElement | null>(null)
+const iframeHead = ref<HTMLHeadElement | null>(null)
 
 onMounted(async () => {
   const el = document.createElement('div')
@@ -23,25 +22,28 @@ onMounted(async () => {
   // wait for the iframe to be mounted
   await sleep(50)
 
-  iframeBody.value = iframeRef.value.contentDocument.body
-  iframeHead.value = iframeRef.value.contentDocument.head
+  iframeBody.value = iframeRef.value?.contentDocument?.body ?? null
+  iframeHead.value = iframeRef.value?.contentDocument?.head ?? null
 
-  iframeBody.value.appendChild(el)
-  iframeHead.value.appendChild(
-    await createTemplateElement({
-      type: 'style',
-      source: { type: 'inline', content: 'body { margin: 0; padding: 10px; }' }
-    })
-  )
+  iframeBody.value?.appendChild(el)
+
+  const style = await createTemplateElement({
+    type: 'style',
+    source: { type: 'inline', content: 'body { margin: 0; padding: 10px; }' }
+  })
+
+  if (style) {
+    iframeHead.value?.appendChild(style)
+  }
 
   if (templateElement) {
-    iframeHead.value.appendChild(templateElement)
+    iframeHead.value?.appendChild(templateElement)
   }
 
   createApp({
     name: 'IframeRender',
     setup() {
-      return () => slots.default()
+      return () => (slots.default ? slots.default() : null)
     }
   }).mount(el)
 })

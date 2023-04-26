@@ -1,4 +1,4 @@
-import { ElementType, ElementStyle, SourceType } from '../types'
+import type { ElementType, ElementStyle, SourceType } from '../types'
 
 function createHTMLTemplateElement(
   type: ElementType,
@@ -24,7 +24,7 @@ function createHTMLTemplateElement(
 }
 
 export function useCreateHTMLElement() {
-  function sleep(ms) {
+  function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms))
   }
 
