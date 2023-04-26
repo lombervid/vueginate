@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { createApp, onMounted, ref, useSlots } from 'vue'
-import { useCreateHTMLElement } from '../composebles/createHTMLElement'
+import { useCreateHTMLElement } from '../composables/createHTMLElement'
 import type { SourceType } from '../types'
 
 // https://codesandbox.io/s/hf1fe?file=/src/components/RenderToIFrame.js
