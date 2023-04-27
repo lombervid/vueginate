@@ -14,9 +14,10 @@ function change(page: number) {
 }
 
 const data = reactive({
-  total: 16,
+  total: 86,
   current: 9,
-  perPage: 1
+  perPage: 5,
+  toShow: 2
 })
 </script>
 
@@ -40,6 +41,7 @@ const data = reactive({
       :total-items="data.total"
       :current-page="data.current"
       :items-per-page="data.perPage"
+      :pages-to-show="data.toShow"
       visible-always
       @page-change="change"
     >

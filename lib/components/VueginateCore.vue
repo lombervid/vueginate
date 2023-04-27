@@ -42,12 +42,12 @@ const props = defineProps({
   }
 })
 
-const { currentPage, totalItems, itemsPerPage, pagesToShow } = toRefs(props)
-const { totalPages, current, isFirstPage, previousPage, pages, isLastPage, nextPage } =
-  usePagination(currentPage, totalItems, itemsPerPage, pagesToShow)
+const meta = toRefs(props)
+const { totalPages, currentPage, isFirstPage, previousPage, pages, isLastPage, nextPage } =
+  usePagination(meta.currentPage, meta.totalItems, meta.itemsPerPage, meta.pagesToShow)
 
 function changePage(page: number) {
-  if (page < 1 || page > totalPages.value || page === current.value) {
+  if (page < 1 || page > totalPages.value || page === currentPage.value) {
     return
   }
 
