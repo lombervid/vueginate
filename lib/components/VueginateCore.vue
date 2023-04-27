@@ -1,42 +1,14 @@
 <script setup lang="ts">
+import { PageInfo, PageType } from '@/types'
 import { computed, warn } from 'vue'
 import NextIcon from './Icons/NextIcon.vue'
 import PreviousIcon from './Icons/PreviousIcon.vue'
-import '../style.css'
 
 Math.trunc =
   Math.trunc ||
   function (x) {
     return x < 0 ? Math.ceil(x) : Math.floor(x)
   }
-
-enum PageType {
-  Page = 'page',
-  Ellipsis = 'ellipsis',
-  Current = 'current'
-}
-
-class PageInfo {
-  readonly number: number
-  readonly type: PageType
-
-  constructor(number: number, type: PageType) {
-    this.number = type === PageType.Ellipsis ? 0 : number
-    this.type = type
-  }
-
-  isCurrent(): boolean {
-    return this.type === PageType.Current
-  }
-
-  isEllipsis(): boolean {
-    return this.type === PageType.Ellipsis
-  }
-
-  isPage(): boolean {
-    return this.type === PageType.Page
-  }
-}
 
 const emits = defineEmits<{
   (e: 'pageChange', page: number): void
