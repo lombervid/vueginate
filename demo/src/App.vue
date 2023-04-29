@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 
-import VueginateCore from '@/components/VueginateCore.vue'
+import { Vueginate } from '@/main'
 import RenderToIFrame from './components/RenderToIFrame.vue'
 
 const coreStyle = async (): Promise<string> => {
@@ -37,7 +37,7 @@ const data = reactive({
       Tailwind Core
     </h1>
 
-    <VueginateCore
+    <Vueginate
       :total-items="data.total"
       :current-page="data.current"
       :items-per-page="data.perPage"
@@ -49,7 +49,7 @@ const data = reactive({
       <template #item></template>
       <template #active></template>
       <template #ellipsis></template>
-    </VueginateCore>
+    </Vueginate>
   </RenderToIFrame>
 
   <!-- <RenderToIFrame

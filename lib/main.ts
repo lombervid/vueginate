@@ -4,4 +4,4 @@ import VueginateBulma from './components/VueginateBulma.vue'
 import VueginateCore from './components/VueginateCore.vue'
 import VueginateTailwind from './components/VueginateTailwind.vue'
 
-export { VueginateCore, VueginateBootstrap, VueginateBulma, VueginateTailwind }
+export { VueginateCore as Vueginate, VueginateBootstrap, VueginateBulma, VueginateTailwind }
