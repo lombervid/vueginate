@@ -36,6 +36,6 @@
   @apply cursor-default;
   @apply bg-gray-200 opacity-50;
 }
-.pagination .page-item.ellipsis {
+.pagination .page-item.arrow {
   @apply inline-flex  items-center justify-center p-2;
 }

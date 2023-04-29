@@ -61,11 +61,11 @@ const showComponent = computed(() => props.visibleAlways || totalPages.value > 1
     <ul class="pagination">
       <slot name="previous" :page="{ first: isFirstPage, next: previousPage }">
         <li>
-          <span v-if="isFirstPage" class="page-item ellipsis disabled">
+          <span v-if="isFirstPage" class="page-item arrow disabled">
             <span class="sr-only">Prev Page</span>
             <PreviousIcon />
           </span>
-          <a v-else @click.prevent="changePage(previousPage)" class="page-item ellipsis">
+          <a v-else @click.prevent="changePage(previousPage)" class="page-item arrow">
             <span class="sr-only">Prev Page</span>
             <PreviousIcon />
           </a>
@@ -94,11 +94,11 @@ const showComponent = computed(() => props.visibleAlways || totalPages.value > 1
 
       <slot name="next" :page="{ last: isLastPage, next: nextPage }">
         <li>
-          <span v-if="isLastPage" class="page-item ellipsis disabled">
+          <span v-if="isLastPage" class="page-item arrow disabled">
             <span class="sr-only">Next Page</span>
             <NextIcon />
           </span>
-          <a v-else @click.prevent="changePage(nextPage)" class="page-item ellipsis">
+          <a v-else @click.prevent="changePage(nextPage)" class="page-item arrow">
             <span class="sr-only">Next Page</span>
             <NextIcon />
           </a>
