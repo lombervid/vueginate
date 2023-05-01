@@ -4,6 +4,14 @@ export enum PageType {
   Current = 'current'
 }
 
+export interface PaginationStyles {
+  container?: string
+  page?: string
+  arrow?: string
+  active?: string
+  disabled?: string
+}
+
 export class PageInfo {
   readonly number: number
   readonly type: PageType
