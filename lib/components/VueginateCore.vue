@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { usePagination } from '@/composables/pagination'
 import { useStyles } from '@/composables/styles'
-import { computed, toRefs, withModifiers } from 'vue'
+import { computed, toRefs, withModifiers, type PropType } from 'vue'
+import type { PaginationStyles } from '@/types'
 import NextIcon from './Icons/NextIcon.vue'
 import PreviousIcon from './Icons/PreviousIcon.vue'
 
@@ -40,14 +41,25 @@ const props = defineProps({
   },
   visibleAlways: {
     type: Boolean
+  },
+  withDefaultStyles: {
+    type: [Object, Boolean] as PropType<PaginationStyles | boolean>,
+    default: true
+  },
+  customStyles: {
+    type: Object as PropType<PaginationStyles>,
+    default: () => {
+      return {}
+    }
   }
 })
 
+const meta = toRefs(props)
+
 // Styles composable
-const styles = useStyles()
+const styles = useStyles(meta.customStyles, meta.withDefaultStyles)
 
 // Pagination composable
-const meta = toRefs(props)
 const showComponent = computed(() => props.visibleAlways || totalPages.value > 1)
 const { totalPages, currentPage, isFirstPage, previousPage, pages, isLastPage, nextPage } =
   usePagination(meta.currentPage, meta.totalItems, meta.itemsPerPage, meta.pagesToShow)
@@ -75,7 +87,11 @@ function changePage(page: number) {
 <template>
   <nav v-if="showComponent" aria-label="Page navigation">
     <ul :class="[styles.container]">
-      <slot name="previous" :page="{ first: isFirstPage, next: previousPage }" :events="previousPageEvent">
+      <slot
+        name="previous"
+        :page="{ first: isFirstPage, next: previousPage }"
+        :events="previousPageEvent"
+      >
         <li>
           <a v-if="!isFirstPage" @click.prevent="changePage(previousPage)" :class="[styles.arrow]">
             <span class="sr-only">Prev Page</span>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
-
 import { Vueginate } from '@/main'
+import type { PaginationStyles } from '@/types'
+import { reactive, ref } from 'vue'
 import RenderToIFrame from './components/RenderToIFrame.vue'
 
 const coreStyle = async (): Promise<string> => {
@@ -18,6 +18,16 @@ const data = reactive({
   current: 9,
   perPage: 5,
   toShow: 2
+})
+
+const defaultStyles = ref<PaginationStyles | boolean>(true)
+const customStyles = reactive<PaginationStyles>({
+  container: '',
+  page: '',
+  arrow: '',
+  active: '',
+  ellipsis: '',
+  disabled: ''
 })
 </script>
 
@@ -42,8 +52,10 @@ const data = reactive({
       :current-page="data.current"
       :items-per-page="data.perPage"
       :pages-to-show="data.toShow"
-      visible-always
+      :with-default-styles="defaultStyles"
+      :custom-styles="customStyles"
       @page-change="change"
+      visible-always
     >
       <template #previous></template>
       <template #item></template>
