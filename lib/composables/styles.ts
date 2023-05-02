@@ -3,7 +3,7 @@ import { computed, type ComputedRef, type Ref } from 'vue'
 
 export const DEFAULT_STYLES: PaginationStyles = Object.freeze({
   container: 'pagination',
-  page: 'page-item',
+  item: 'page-item',
   arrow: 'page-item arrow',
   active: 'page-item active',
   ellipsis: 'page-item disabled',
@@ -44,7 +44,7 @@ export function useStyles(
   const styles = computed((): PaginationStyles => {
     return {
       container: getStyles('container'),
-      page: getStyles('page'),
+      item: getStyles('item'),
       arrow: getStyles('arrow'),
       active: getStyles('active'),
       ellipsis: getStyles('ellipsis'),

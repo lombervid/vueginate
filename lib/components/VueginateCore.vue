@@ -120,7 +120,7 @@ function changePage(page: number) {
 
         <slot v-else name="item" :events="clickEventObject(page.number)">
           <li>
-            <a @click.prevent="changePage(page.number)" :class="[styles.page]">
+            <a @click.prevent="changePage(page.number)" :class="[styles.item]">
               {{ page.number }}
             </a>
           </li>
