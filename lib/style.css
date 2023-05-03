@@ -21,7 +21,6 @@
 }
 
 .pagination .page-item {
-  @apply cursor-pointer;
   @apply border-solid text-inherit no-underline decoration-inherit;
   @apply block h-8 w-8 rounded border border-gray-300 text-center leading-8;
 }
@@ -29,11 +28,9 @@
   @apply border-gray-400 bg-gray-50;
 }
 .pagination .page-item.active {
-  @apply cursor-default;
   @apply border-blue-500 bg-blue-50 text-blue-600;
 }
 .pagination .page-item.disabled {
-  @apply cursor-default;
   @apply bg-gray-200 opacity-50;
 }
 .pagination .page-item.arrow {
