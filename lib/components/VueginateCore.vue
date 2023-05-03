@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { usePagination } from '@/composables/pagination'
 import { useStyles } from '@/composables/styles'
-import { computed, toRefs, withModifiers, type PropType } from 'vue'
 import type { PaginationStyles } from '@/types'
+import { computed, toRefs, type PropType } from 'vue'
 import NextIcon from './Icons/NextIcon.vue'
 import PreviousIcon from './Icons/PreviousIcon.vue'
 
@@ -64,18 +64,6 @@ const showComponent = computed(() => props.visibleAlways || totalPages.value > 1
 const { totalPages, currentPage, isFirstPage, previousPage, pages, isLastPage, nextPage } =
   usePagination(meta.currentPage, meta.totalItems, meta.itemsPerPage, meta.pagesToShow)
 
-// Page events
-const nextPageEvent = computed(() => (!isLastPage.value ? clickEventObject(nextPage.value) : {}))
-const previousPageEvent = computed(() =>
-  !isFirstPage.value ? clickEventObject(previousPage.value) : {}
-)
-
-function clickEventObject(page: number): Object {
-  return {
-    click: withModifiers(() => changePage(page), ['prevent'])
-  }
-}
-
 function changePage(page: number) {
   if (page < 1 || page > totalPages.value || page === currentPage.value) {
     return
@@ -89,11 +77,21 @@ function changePage(page: number) {
     <ul :class="[styles.container]">
       <slot
         name="previous"
-        :page="{ first: isFirstPage, next: previousPage }"
-        :events="previousPageEvent"
+        :item="{
+          isFirst: isFirstPage,
+          target: previousPage,
+          cssClass: styles.arrow,
+          cssDisabled: styles.disabled
+        }"
+        :emit="!isFirstPage ? () => changePage(previousPage) : null"
       >
         <li>
-          <a v-if="!isFirstPage" @click.prevent="changePage(previousPage)" :class="[styles.arrow]">
+          <a
+            v-if="!isFirstPage"
+            @click.prevent="changePage(previousPage)"
+            :class="[styles.arrow]"
+            href="#"
+          >
             <span class="sr-only">Prev Page</span>
             <PreviousIcon />
           </a>
@@ -106,30 +104,57 @@ function changePage(page: number) {
       </slot>
 
       <template v-for="page in pages" :key="page">
-        <slot v-if="page.isEllipsis()" name="ellipsis">
+        <slot
+          v-if="page.isEllipsis()"
+          name="ellipsis"
+          :item="{ target: page.number, cssClass: styles.ellipsis }"
+        >
           <li>
             <span :class="[styles.ellipsis]">&#8230;</span>
           </li>
         </slot>
 
-        <slot v-else-if="page.isCurrent()" name="active">
+        <slot
+          v-else-if="page.isCurrent()"
+          name="active"
+          :item="{ target: page.number, cssClass: styles.active }"
+        >
           <li>
             <span :class="[styles.active]">{{ page.number }}</span>
           </li>
         </slot>
 
-        <slot v-else name="item" :events="clickEventObject(page.number)">
+        <slot
+          v-else
+          name="item"
+          :item="{ target: page.number, cssClass: styles.item }"
+          :emit="() => changePage(page.number)"
+        >
           <li>
-            <a @click.prevent="changePage(page.number)" :class="[styles.item]">
+            <a @click.prevent="changePage(page.number)" :class="[styles.item]" href="#">
               {{ page.number }}
             </a>
           </li>
         </slot>
       </template>
 
-      <slot name="next" :page="{ last: isLastPage, next: nextPage }" :events="nextPageEvent">
+      <slot
+        name="next"
+        :item="{
+          isLast: isLastPage,
+          target: nextPage,
+          cssClass: styles.arrow,
+          cssDisabled: styles.disabled
+        }"
+        :emit="!isLastPage ? () => changePage(nextPage) : null"
+      >
         <li>
-          <a v-if="!isLastPage" @click.prevent="changePage(nextPage)" :class="[styles.arrow]">
+          <a
+            v-if="!isLastPage"
+            @click.prevent="changePage(nextPage)"
+            :class="[styles.arrow]"
+            href="#"
+          >
             <span class="sr-only">Next Page</span>
             <NextIcon />
           </a>
