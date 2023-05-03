@@ -5,12 +5,12 @@ export enum PageType {
 }
 
 export interface PaginationStyles {
-  container?: string
-  item?: string
-  arrow?: string
-  active?: string
-  ellipsis?: string
-  disabled?: string
+  container?: string[]
+  item?: string[]
+  arrow?: string[]
+  active?: string[]
+  ellipsis?: string[]
+  disabled?: string[]
 }
 
 export class PageInfo {

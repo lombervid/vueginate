@@ -22,12 +22,12 @@ const data = reactive({
 
 const defaultStyles = ref<PaginationStyles | boolean>(true)
 const customStyles = reactive<PaginationStyles>({
-  container: '',
-  item: '',
-  arrow: '',
-  active: '',
-  ellipsis: '',
-  disabled: ''
+  container: [],
+  item: [],
+  arrow: [],
+  active: [],
+  ellipsis: [],
+  disabled: []
 })
 </script>
 
