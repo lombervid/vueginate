@@ -80,8 +80,7 @@ function changePage(page: number) {
         :item="{
           isFirst: isFirstPage,
           target: previousPage,
-          cssClass: styles.arrow,
-          cssDisabled: styles.disabled
+          cssClass: [...styles.arrow, ...(isFirstPage ? styles.disabled : [])]
         }"
         :emit="!isFirstPage ? () => changePage(previousPage) : null"
       >
@@ -143,8 +142,7 @@ function changePage(page: number) {
         :item="{
           isLast: isLastPage,
           target: nextPage,
-          cssClass: styles.arrow,
-          cssDisabled: styles.disabled
+          cssClass: [...styles.arrow, ...(isLastPage ? styles.disabled : [])]
         }"
         :emit="!isLastPage ? () => changePage(nextPage) : null"
       >
