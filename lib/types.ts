@@ -11,6 +11,7 @@ export interface PaginationStyles {
   arrow?: string[]
   active?: string[]
   disabled?: string[]
+  readers?: string[]
 }
 
 export class PageInfo {

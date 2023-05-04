@@ -7,7 +7,8 @@ export const DEFAULT_STYLES: PaginationStyles = Object.freeze({
   page: ['vg-page'],
   arrow: ['vg-arrow'],
   active: ['vg-active'],
-  disabled: ['vg-disabled']
+  disabled: ['vg-disabled'],
+  readers: ['sr-only']
 })
 
 export function useStyles(
@@ -48,7 +49,8 @@ export function useStyles(
       page: getStyles('page'),
       arrow: getStyles('arrow'),
       active: getStyles('active'),
-      disabled: getStyles('disabled')
+      disabled: getStyles('disabled'),
+      readers: getStyles('readers')
     }
   })
 

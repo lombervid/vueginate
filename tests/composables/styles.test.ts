@@ -13,7 +13,8 @@ const EMPTY_STYLES: PaginationStyles = Object.freeze({
   page: [],
   arrow: [],
   active: [],
-  disabled: []
+  disabled: [],
+  readers: []
 })
 
 describe('useStyles', () => {
@@ -50,7 +51,8 @@ describe('useStyles', () => {
         page: ['custom-page'],
         arrow: ['custom-arrow'],
         active: ['custom-active'],
-        disabled: ['custom-disabled']
+        disabled: ['custom-disabled'],
+        readers: ['custom-readers']
       },
       expected: {
         container: ['custom-container'],
@@ -58,7 +60,8 @@ describe('useStyles', () => {
         page: ['custom-page'],
         arrow: ['custom-arrow'],
         active: ['custom-active'],
-        disabled: ['custom-disabled']
+        disabled: ['custom-disabled'],
+        readers: ['custom-readers']
       }
     }
   ])('default styles customization', ({ defaults, expected }) => {
@@ -82,7 +85,8 @@ describe('useStyles', () => {
         page: ['custom-page'],
         arrow: ['custom-arrow'],
         active: ['custom-active'],
-        disabled: ['custom-disabled']
+        disabled: ['custom-disabled'],
+        readers: ['custom-readers']
       },
       expected: {
         container: [...(DEFAULT_STYLES.container ?? []), 'custom-container'],
@@ -90,7 +94,8 @@ describe('useStyles', () => {
         page: [...(DEFAULT_STYLES.page ?? []), 'custom-page'],
         arrow: [...(DEFAULT_STYLES.arrow ?? []), 'custom-arrow'],
         active: [...(DEFAULT_STYLES.active ?? []), 'custom-active'],
-        disabled: [...(DEFAULT_STYLES.disabled ?? []), 'custom-disabled']
+        disabled: [...(DEFAULT_STYLES.disabled ?? []), 'custom-disabled'],
+        readers: [...(DEFAULT_STYLES.readers ?? []), 'custom-readers']
       }
     }
   ])('custom styles ($custom) -> $expected', ({ custom, expected }) => {
@@ -125,7 +130,8 @@ describe('useStyles', () => {
         page: ['custom-page'],
         arrow: ['custom-arrow'],
         active: ['custom-active'],
-        disabled: ['custom-disabled']
+        disabled: ['custom-disabled'],
+        readers: ['custom-readers']
       },
       defaults: {
         container: ['default-container'],
@@ -133,7 +139,8 @@ describe('useStyles', () => {
         page: ['default-page'],
         arrow: ['default-arrow'],
         active: ['default-active'],
-        disabled: ['default-disabled']
+        disabled: ['default-disabled'],
+        readers: ['default-readers']
       },
       expected: {
         container: ['default-container', 'custom-container'],
@@ -141,7 +148,8 @@ describe('useStyles', () => {
         page: ['default-page', 'custom-page'],
         arrow: ['default-arrow', 'custom-arrow'],
         active: ['default-active', 'custom-active'],
-        disabled: ['default-disabled', 'custom-disabled']
+        disabled: ['default-disabled', 'custom-disabled'],
+        readers: ['default-readers', 'custom-readers']
       }
     }
   ])(
