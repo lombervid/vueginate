@@ -4,6 +4,7 @@ import { computed, type ComputedRef, type Ref } from 'vue'
 export const DEFAULT_STYLES: PaginationStyles = Object.freeze({
   container: ['vueginate-container'],
   item: ['vg-item'],
+  page: ['vg-page'],
   arrow: ['vg-arrow'],
   active: ['vg-active'],
   disabled: ['vg-disabled']
@@ -44,6 +45,7 @@ export function useStyles(
     return {
       container: getStyles('container'),
       item: getStyles('item'),
+      page: getStyles('page'),
       arrow: getStyles('arrow'),
       active: getStyles('active'),
       disabled: getStyles('disabled')

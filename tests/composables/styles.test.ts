@@ -10,6 +10,7 @@ const styles = useStyles(testStyles, testDefaultStyles)
 const EMPTY_STYLES: PaginationStyles = Object.freeze({
   container: [],
   item: [],
+  page: [],
   arrow: [],
   active: [],
   disabled: []
@@ -46,6 +47,7 @@ describe('useStyles', () => {
       defaults: {
         container: ['custom-container'],
         item: ['custom-item'],
+        page: ['custom-page'],
         arrow: ['custom-arrow'],
         active: ['custom-active'],
         disabled: ['custom-disabled']
@@ -53,6 +55,7 @@ describe('useStyles', () => {
       expected: {
         container: ['custom-container'],
         item: ['custom-item'],
+        page: ['custom-page'],
         arrow: ['custom-arrow'],
         active: ['custom-active'],
         disabled: ['custom-disabled']
@@ -76,6 +79,7 @@ describe('useStyles', () => {
       custom: {
         container: ['custom-container'],
         item: ['custom-item'],
+        page: ['custom-page'],
         arrow: ['custom-arrow'],
         active: ['custom-active'],
         disabled: ['custom-disabled']
@@ -83,6 +87,7 @@ describe('useStyles', () => {
       expected: {
         container: [...(DEFAULT_STYLES.container ?? []), 'custom-container'],
         item: [...(DEFAULT_STYLES.item ?? []), 'custom-item'],
+        page: [...(DEFAULT_STYLES.page ?? []), 'custom-page'],
         arrow: [...(DEFAULT_STYLES.arrow ?? []), 'custom-arrow'],
         active: [...(DEFAULT_STYLES.active ?? []), 'custom-active'],
         disabled: [...(DEFAULT_STYLES.disabled ?? []), 'custom-disabled']
@@ -117,6 +122,7 @@ describe('useStyles', () => {
       custom: {
         container: ['custom-container'],
         item: ['custom-item'],
+        page: ['custom-page'],
         arrow: ['custom-arrow'],
         active: ['custom-active'],
         disabled: ['custom-disabled']
@@ -124,6 +130,7 @@ describe('useStyles', () => {
       defaults: {
         container: ['default-container'],
         item: ['default-item'],
+        page: ['default-page'],
         arrow: ['default-arrow'],
         active: ['default-active'],
         disabled: ['default-disabled']
@@ -131,6 +138,7 @@ describe('useStyles', () => {
       expected: {
         container: ['default-container', 'custom-container'],
         item: ['default-item', 'custom-item'],
+        page: ['default-page', 'custom-page'],
         arrow: ['default-arrow', 'custom-arrow'],
         active: ['default-active', 'custom-active'],
         disabled: ['default-disabled', 'custom-disabled']

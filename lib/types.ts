@@ -7,6 +7,7 @@ export enum PageType {
 export interface PaginationStyles {
   container?: string[]
   item?: string[]
+  page?: string[]
   arrow?: string[]
   active?: string[]
   disabled?: string[]
