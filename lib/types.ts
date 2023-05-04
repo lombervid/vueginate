@@ -9,7 +9,6 @@ export interface PaginationStyles {
   item?: string[]
   arrow?: string[]
   active?: string[]
-  ellipsis?: string[]
   disabled?: string[]
 }
 

@@ -1,5 +1,5 @@
-.pagination,
-.pagination * {
+.vueginate-container,
+.vueginate-container * {
   @apply box-border;
 }
 
@@ -15,24 +15,24 @@
   border-width: 0;
 }
 
-.pagination {
+.vueginate-container {
   @apply list-none;
   @apply flex select-none justify-center gap-1 text-xs font-medium text-gray-600;
 }
 
-.pagination .page-item {
+.vueginate-container .vg-item {
   @apply border-solid text-inherit no-underline decoration-inherit;
   @apply block h-8 w-8 rounded border border-gray-300 text-center leading-8;
 }
-.pagination .page-item:hover:not(.active):not(.disabled) {
+.vueginate-container .vg-item:hover:not(.vg-active):not(.vg-disabled) {
   @apply border-gray-400 bg-gray-50;
 }
-.pagination .page-item.active {
+.vueginate-container .vg-item.vg-active {
   @apply border-blue-500 bg-blue-50 text-blue-600;
 }
-.pagination .page-item.disabled {
+.vueginate-container .vg-item.vg-disabled {
   @apply bg-gray-200 opacity-50;
 }
-.pagination .page-item.arrow {
+.vueginate-container .vg-item.vg-arrow {
   @apply inline-flex  items-center justify-center p-2;
 }
