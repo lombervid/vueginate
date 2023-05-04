@@ -26,7 +26,6 @@ const customStyles = reactive<PaginationStyles>({
   item: [],
   arrow: [],
   active: [],
-  ellipsis: [],
   disabled: []
 })
 </script>

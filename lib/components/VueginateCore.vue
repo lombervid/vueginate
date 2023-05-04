@@ -80,7 +80,7 @@ function changePage(page: number) {
         :item="{
           isFirst: isFirstPage,
           target: previousPage,
-          cssClass: [...styles.arrow, ...(isFirstPage ? styles.disabled : [])]
+          cssClass: [styles.item, styles.arrow, isFirstPage ? styles.disabled : []]
         }"
         :emit="!isFirstPage ? () => changePage(previousPage) : null"
       >
@@ -88,14 +88,14 @@ function changePage(page: number) {
           <a
             v-if="!isFirstPage"
             @click.prevent="changePage(previousPage)"
-            :class="[styles.arrow]"
+            :class="[styles.item, styles.arrow]"
             href="#"
           >
             <span class="sr-only">Prev Page</span>
             <PreviousIcon />
           </a>
 
-          <span v-else :class="[styles.arrow, styles.disabled]">
+          <span v-else :class="[styles.item, styles.arrow, styles.disabled]">
             <span class="sr-only">Prev Page</span>
             <PreviousIcon />
           </span>
@@ -106,20 +106,20 @@ function changePage(page: number) {
         <slot
           v-if="page.isEllipsis()"
           name="ellipsis"
-          :item="{ target: page.number, cssClass: styles.ellipsis }"
+          :item="{ target: page.number, cssClass: [styles.item, styles.disabled] }"
         >
           <li>
-            <span :class="[styles.ellipsis]">&#8230;</span>
+            <span :class="[styles.item, styles.disabled]">&#8230;</span>
           </li>
         </slot>
 
         <slot
           v-else-if="page.isCurrent()"
           name="active"
-          :item="{ target: page.number, cssClass: styles.active }"
+          :item="{ target: page.number, cssClass: [styles.item, styles.active] }"
         >
           <li>
-            <span :class="[styles.active]">{{ page.number }}</span>
+            <span :class="[styles.item, styles.active]" aria-current="page">{{ page.number }}</span>
           </li>
         </slot>
 
@@ -142,7 +142,7 @@ function changePage(page: number) {
         :item="{
           isLast: isLastPage,
           target: nextPage,
-          cssClass: [...styles.arrow, ...(isLastPage ? styles.disabled : [])]
+          cssClass: [styles.item, styles.arrow, isLastPage ? styles.disabled : []]
         }"
         :emit="!isLastPage ? () => changePage(nextPage) : null"
       >
@@ -150,14 +150,14 @@ function changePage(page: number) {
           <a
             v-if="!isLastPage"
             @click.prevent="changePage(nextPage)"
-            :class="[styles.arrow]"
+            :class="[styles.item, styles.arrow]"
             href="#"
           >
             <span class="sr-only">Next Page</span>
             <NextIcon />
           </a>
 
-          <span v-else :class="[styles.arrow, styles.disabled]">
+          <span v-else :class="[styles.item, styles.arrow, styles.disabled]">
             <span class="sr-only">Next Page</span>
             <NextIcon />
           </span>

@@ -12,7 +12,6 @@ const EMPTY_STYLES: PaginationStyles = Object.freeze({
   item: [],
   arrow: [],
   active: [],
-  ellipsis: [],
   disabled: []
 })
 
@@ -49,7 +48,6 @@ describe('useStyles', () => {
         item: ['custom-item'],
         arrow: ['custom-arrow'],
         active: ['custom-active'],
-        ellipsis: ['custom-ellipsis'],
         disabled: ['custom-disabled']
       },
       expected: {
@@ -57,7 +55,6 @@ describe('useStyles', () => {
         item: ['custom-item'],
         arrow: ['custom-arrow'],
         active: ['custom-active'],
-        ellipsis: ['custom-ellipsis'],
         disabled: ['custom-disabled']
       }
     }
@@ -81,7 +78,6 @@ describe('useStyles', () => {
         item: ['custom-item'],
         arrow: ['custom-arrow'],
         active: ['custom-active'],
-        ellipsis: ['custom-ellipsis'],
         disabled: ['custom-disabled']
       },
       expected: {
@@ -89,7 +85,6 @@ describe('useStyles', () => {
         item: [...(DEFAULT_STYLES.item ?? []), 'custom-item'],
         arrow: [...(DEFAULT_STYLES.arrow ?? []), 'custom-arrow'],
         active: [...(DEFAULT_STYLES.active ?? []), 'custom-active'],
-        ellipsis: [...(DEFAULT_STYLES.ellipsis ?? []), 'custom-ellipsis'],
         disabled: [...(DEFAULT_STYLES.disabled ?? []), 'custom-disabled']
       }
     }
@@ -105,7 +100,7 @@ describe('useStyles', () => {
       expected: {
         ...DEFAULT_STYLES,
         item: ['default-item'],
-        disabled: ['disabled', 'custom-disabled']
+        disabled: [...(DEFAULT_STYLES.disabled ?? []), 'custom-disabled']
       }
     },
     {
@@ -124,7 +119,6 @@ describe('useStyles', () => {
         item: ['custom-item'],
         arrow: ['custom-arrow'],
         active: ['custom-active'],
-        ellipsis: ['custom-ellipsis'],
         disabled: ['custom-disabled']
       },
       defaults: {
@@ -132,7 +126,6 @@ describe('useStyles', () => {
         item: ['default-item'],
         arrow: ['default-arrow'],
         active: ['default-active'],
-        ellipsis: ['default-ellipsis'],
         disabled: ['default-disabled']
       },
       expected: {
@@ -140,7 +133,6 @@ describe('useStyles', () => {
         item: ['default-item', 'custom-item'],
         arrow: ['default-arrow', 'custom-arrow'],
         active: ['default-active', 'custom-active'],
-        ellipsis: ['default-ellipsis', 'custom-ellipsis'],
         disabled: ['default-disabled', 'custom-disabled']
       }
     }

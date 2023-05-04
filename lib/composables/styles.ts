@@ -2,12 +2,11 @@ import type { PaginationStyles } from '@/types'
 import { computed, type ComputedRef, type Ref } from 'vue'
 
 export const DEFAULT_STYLES: PaginationStyles = Object.freeze({
-  container: ['pagination'],
-  item: ['page-item'],
-  arrow: ['page-item', 'arrow'],
-  active: ['page-item', 'active'],
-  ellipsis: ['page-item', 'disabled'],
-  disabled: ['disabled']
+  container: ['vueginate-container'],
+  item: ['vg-item'],
+  arrow: ['vg-arrow'],
+  active: ['vg-active'],
+  disabled: ['vg-disabled']
 })
 
 export function useStyles(
@@ -47,7 +46,6 @@ export function useStyles(
       item: getStyles('item'),
       arrow: getStyles('arrow'),
       active: getStyles('active'),
-      ellipsis: getStyles('ellipsis'),
       disabled: getStyles('disabled')
     }
   })
