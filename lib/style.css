@@ -15,9 +15,19 @@
   border-width: 0;
 }
 
+.vg-center {
+  @apply justify-center;
+}
+.vg-left {
+  @apply justify-start;
+}
+.vg-right {
+  @apply justify-end;
+}
+
 .vueginate-container {
   @apply list-none;
-  @apply flex select-none justify-center gap-1 text-xs font-medium text-gray-600;
+  @apply flex select-none gap-1 text-xs font-medium text-gray-600;
 }
 
 .vueginate-container .vg-item {
