@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Vueginate, VueginateTailwind } from '@/main'
+import { Vueginate, VueginateTailwind, VueginateBootstrap } from '@/main'
 import { reactive } from 'vue'
 import RenderToIFrame from './components/RenderToIFrame.vue'
 
@@ -77,7 +77,7 @@ const data = reactive({
     />
   </RenderToIFrame>
 
-  <!-- <RenderToIFrame
+  <RenderToIFrame
     :type="{
       type: 'link',
       source: {
@@ -87,11 +87,43 @@ const data = reactive({
     }"
   >
     <h1 class="fw-semibold border-bottom border-info-subtle border-2 text-center">
-      Bootstrap Pagination
+      Bootstrap 5 Pagination
     </h1>
 
-    <VueginateBootstrap />
-  </RenderToIFrame> -->
+    <VueginateBootstrap
+      :total-items="data.total"
+      :current-page="data.current"
+      :items-per-page="data.perPage"
+      :pages-to-show="data.toShow"
+      :custom-styles="{ container: ['justify-content-center'] }"
+      @page-change="change"
+      visible-always
+    />
+  </RenderToIFrame>
+
+  <RenderToIFrame
+    :type="{
+      type: 'link',
+      source: {
+        type: 'source',
+        content: 'https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css'
+      }
+    }"
+  >
+    <h1 class="fw-semibold border-bottom border-info-subtle border-2 text-center">
+      Bootstrap 4 Pagination
+    </h1>
+
+    <VueginateBootstrap
+      :total-items="data.total"
+      :current-page="data.current"
+      :items-per-page="data.perPage"
+      :pages-to-show="data.toShow"
+      :custom-styles="{ container: ['justify-content-center'] }"
+      @page-change="change"
+      visible-always
+    />
+  </RenderToIFrame>
 
   <!-- <RenderToIFrame
     :type="{
