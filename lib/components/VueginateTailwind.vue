@@ -66,21 +66,16 @@ function changePage(page: number) {
         'w-8',
         'rounded',
         'border',
-        'border-gray-300',
         'text-center',
         'leading-8',
-        'hover:border-gray-400',
-        'hover:bg-gray-50'
+        '[&:not(.active)]:border-gray-300',
+        '[&:not(.active)]:[&:not(.disabled)]:hover:border-gray-400',
+        '[&:not(.active)]:[&:not(.disabled)]:hover:bg-gray-50'
       ],
-      active: [
-        'bg-blue-50',
-        'text-blue-600',
-        '!border-blue-500',
-        'hover:!border-blue-500',
-        'hover:!bg-blue-50'
-      ],
-      arrow: ['inline-flex', 'items-center', 'justify-center', 'p-2'],
-      disabled: ['bg-gray-200', 'opacity-50', 'hover:!border-gray-300', 'hover:!bg-gray-200']
+      page: [],
+      active: ['active', 'bg-blue-50', 'text-blue-600', 'border-blue-500'],
+      arrow: ['arrow', 'p-2'],
+      disabled: ['disabled', 'bg-gray-200', 'opacity-50']
     }"
     :custom-styles="customStyles"
     :visible-always="visibleAlways"

@@ -126,11 +126,15 @@ function changePage(page: number) {
         <slot
           v-else
           name="item"
-          :item="{ target: page.number, cssClass: styles.item }"
+          :item="{ target: page.number, cssClass: [styles.item, styles.page] }"
           :emit="() => changePage(page.number)"
         >
           <li>
-            <a @click.prevent="changePage(page.number)" :class="[styles.item]" href="#">
+            <a
+              @click.prevent="changePage(page.number)"
+              :class="[styles.item, styles.page]"
+              href="#"
+            >
               {{ page.number }}
             </a>
           </li>
