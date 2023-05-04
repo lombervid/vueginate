@@ -1,97 +1,89 @@
 <script setup lang="ts">
-import PreviousIcon from './Icons/PreviousIcon.vue'
-import NextIcon from './Icons/NextIcon.vue'
+import type { PaginationStyles } from '@/types'
+import type { PropType } from 'vue'
+import VueginateCore from './VueginateCore.vue'
+
+const emits = defineEmits<{
+  (e: 'page-change', page: number): void
+}>()
+
+defineProps({
+  totalItems: {
+    type: Number,
+    required: true,
+    validator(value: number) {
+      return Number.isInteger(value) && value >= 0
+    }
+  },
+  currentPage: {
+    type: Number,
+    required: true,
+    validator(value: number) {
+      return Number.isInteger(value) && value > 0
+    }
+  },
+  itemsPerPage: {
+    type: Number,
+    required: true,
+    validator(value: number) {
+      return Number.isInteger(value) && value > 0
+    }
+  },
+  pagesToShow: {
+    type: Number,
+    default: 2,
+    validator(value: number) {
+      return Number.isInteger(value) && value >= -1
+    }
+  },
+  visibleAlways: {
+    type: Boolean
+  },
+  customStyles: {
+    type: Object as PropType<PaginationStyles>,
+    default: () => {
+      return {}
+    }
+  }
+})
+
+function changePage(page: number) {
+  emits('page-change', page)
+}
 </script>
 
 <template>
-  <!-- Tailwind -->
-  <nav aria-label="Page navigation">
-    <ul class="flex select-none justify-center gap-1 text-xs font-medium text-gray-600">
-      <li>
-        <a
-          href="#"
-          class="inline-flex h-8 w-8 items-center justify-center rounded border border-gray-300 p-2 text-center leading-8 hover:border-gray-400 hover:bg-gray-50"
-        >
-          <span class="sr-only">Prev Page</span>
-          <PreviousIcon />
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="block h-8 w-8 rounded border border-gray-300 text-center leading-8 hover:border-gray-400 hover:bg-gray-50"
-        >
-          1
-        </a>
-      </li>
-      <li>
-        <span
-          class="block h-8 w-8 rounded border border-gray-300 bg-gray-200 text-center leading-8 opacity-50"
-        >
-          ...
-        </span>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="block h-8 w-8 rounded border border-gray-300 text-center leading-8 hover:border-gray-400 hover:bg-gray-50"
-        >
-          13
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="block h-8 w-8 rounded border border-gray-300 text-center leading-8 hover:border-gray-400 hover:bg-gray-50"
-        >
-          14
-        </a>
-      </li>
-      <li
-        class="block h-8 w-8 rounded border border-blue-500 bg-blue-50 text-center leading-8 text-blue-600"
-      >
-        15
-      </li>
-      <li>
-        <a
-          href="#"
-          class="block h-8 w-8 rounded border border-gray-300 text-center leading-8 hover:border-gray-400 hover:bg-gray-50"
-        >
-          16
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="block h-8 w-8 rounded border border-gray-300 text-center leading-8 hover:border-gray-400 hover:bg-gray-50"
-        >
-          17
-        </a>
-      </li>
-      <li>
-        <span
-          class="block h-8 w-8 rounded border border-gray-300 bg-gray-200 text-center leading-8 opacity-50"
-        >
-          ...
-        </span>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="block h-8 w-8 rounded border border-gray-300 text-center leading-8 hover:border-gray-400 hover:bg-gray-50"
-        >
-          30
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="inline-flex h-8 w-8 items-center justify-center rounded border border-gray-300 p-2 text-center leading-8 hover:border-gray-400 hover:bg-gray-50"
-        >
-          <span class="sr-only">Next Page</span>
-          <NextIcon />
-        </a>
-      </li>
-    </ul>
-  </nav>
+  <VueginateCore
+    :total-items="totalItems"
+    :current-page="currentPage"
+    :items-per-page="itemsPerPage"
+    :pages-to-show="pagesToShow"
+    :with-default-styles="{
+      container: ['flex', 'select-none', 'gap-1', 'text-xs', 'font-medium', 'text-gray-600'],
+      item: [
+        'block',
+        'h-8',
+        'w-8',
+        'rounded',
+        'border',
+        'border-gray-300',
+        'text-center',
+        'leading-8',
+        'hover:border-gray-400',
+        'hover:bg-gray-50'
+      ],
+      active: [
+        'bg-blue-50',
+        'text-blue-600',
+        '!border-blue-500',
+        'hover:!border-blue-500',
+        'hover:!bg-blue-50'
+      ],
+      arrow: ['inline-flex', 'items-center', 'justify-center', 'p-2'],
+      disabled: ['bg-gray-200', 'opacity-50', 'hover:!border-gray-300', 'hover:!bg-gray-200']
+    }"
+    :custom-styles="customStyles"
+    :visible-always="visibleAlways"
+    @page-change="changePage"
+  />
 </template>
