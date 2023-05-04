@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Vueginate, VueginateTailwind } from '@/main'
 import { reactive } from 'vue'
 import RenderToIFrame from './components/RenderToIFrame.vue'
 
@@ -52,22 +53,6 @@ const data = reactive({
     </Vueginate>
   </RenderToIFrame>
 
-  <!-- <RenderToIFrame
-    :type="{
-      type: 'style',
-      source: {
-        type: 'inline',
-        content: coreStyle
-      }
-    }"
-  >
-    <h1 style="text-align: center; border-bottom: 2px solid #171; padding-bottom: 1.25rem">
-      Tailwind Core
-    </h1>
-
-    <VueginateCore />
-  </RenderToIFrame>
-
   <RenderToIFrame
     :type="{
       type: 'script',
@@ -81,10 +66,18 @@ const data = reactive({
       Tailwind Pagination
     </h1>
 
-    <VueginateTailwind />
+    <VueginateTailwind
+      :total-items="data.total"
+      :current-page="data.current"
+      :items-per-page="data.perPage"
+      :pages-to-show="data.toShow"
+      :custom-styles="{ container: ['justify-center'] }"
+      @page-change="change"
+      visible-always
+    />
   </RenderToIFrame>
 
-  <RenderToIFrame
+  <!-- <RenderToIFrame
     :type="{
       type: 'link',
       source: {
@@ -98,9 +91,9 @@ const data = reactive({
     </h1>
 
     <VueginateBootstrap />
-  </RenderToIFrame>
+  </RenderToIFrame> -->
 
-  <RenderToIFrame
+  <!-- <RenderToIFrame
     :type="{
       type: 'link',
       source: {
