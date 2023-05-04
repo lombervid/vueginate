@@ -75,7 +75,8 @@ function changePage(page: number) {
       page: [],
       active: ['active', 'bg-blue-50', 'text-blue-600', 'border-blue-500'],
       arrow: ['arrow', 'p-2'],
-      disabled: ['disabled', 'bg-gray-200', 'opacity-50']
+      disabled: ['disabled', 'bg-gray-200', 'opacity-50'],
+      readers: ['sr-only']
     }"
     :custom-styles="customStyles"
     :visible-always="visibleAlways"

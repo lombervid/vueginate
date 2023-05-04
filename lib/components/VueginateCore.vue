@@ -91,12 +91,12 @@ function changePage(page: number) {
             :class="[styles.item, styles.arrow]"
             href="#"
           >
-            <span class="sr-only">Prev Page</span>
+            <span :class="styles.readers">Prev Page</span>
             <PreviousIcon />
           </a>
 
           <span v-else :class="[styles.item, styles.arrow, styles.disabled]">
-            <span class="sr-only">Prev Page</span>
+            <span :class="styles.readers">Prev Page</span>
             <PreviousIcon />
           </span>
         </li>
@@ -157,12 +157,12 @@ function changePage(page: number) {
             :class="[styles.item, styles.arrow]"
             href="#"
           >
-            <span class="sr-only">Next Page</span>
+            <span :class="styles.readers">Next Page</span>
             <NextIcon />
           </a>
 
           <span v-else :class="[styles.item, styles.arrow, styles.disabled]">
-            <span class="sr-only">Next Page</span>
+            <span :class="styles.readers">Next Page</span>
             <NextIcon />
           </span>
         </li>
