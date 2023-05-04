@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Vueginate, VueginateTailwind, VueginateBootstrap } from '@/main'
+import { Vueginate, VueginateBootstrap, VueginateBulma, VueginateTailwind } from '@/main'
 import { reactive } from 'vue'
 import RenderToIFrame from './components/RenderToIFrame.vue'
 
@@ -125,7 +125,7 @@ const data = reactive({
     />
   </RenderToIFrame>
 
-  <!-- <RenderToIFrame
+  <RenderToIFrame
     :type="{
       type: 'link',
       source: {
@@ -138,8 +138,17 @@ const data = reactive({
       Bulma Pagination
     </h1>
 
-    <VueginateBulma />
-  </RenderToIFrame> -->
+    <VueginateBulma
+      class="is-centered"
+      :total-items="data.total"
+      :current-page="data.current"
+      :items-per-page="data.perPage"
+      :pages-to-show="data.toShow"
+      :custom-styles="{ container: [] }"
+      @page-change="change"
+      visible-always
+    />
+  </RenderToIFrame>
 </template>
 
 <style scoped>
