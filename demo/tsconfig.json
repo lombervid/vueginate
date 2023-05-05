@@ -1,0 +1,13 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": ["src/**/*", "src/**/*.vue", "../lib/**/*", "../lib/**/*.vue"],
+  "compilerOptions": {
+    "rootDir": "../",
+    "types": ["vite/client"],
+    "composite": true,
+    "paths": {
+      "@/*": ["../lib/*"],
+      "@dist/*": ["../dist/*"]
+    }
+  }
+}

@@ -1,7 +1,6 @@
 {
   "extends": "./tsconfig.app.json",
-  "include": ["env.d.ts", "lib/**/*", "lib/**/*.vue", "tests/**/*.test.ts"],
-  "exclude": ["demo/*"],
+  "include": ["lib/**/*", "lib/**/*.vue", "tests/**/*.test.ts"],
   "compilerOptions": {
     "composite": true,
     "lib": [],

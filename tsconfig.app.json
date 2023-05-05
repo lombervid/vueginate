@@ -1,13 +1,12 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "lib/**/*", "lib/**/*.vue", "demo/src/**/*", "demo/src/**/*.vue"],
+  "include": ["lib/**/*", "lib/**/*.vue"],
   "exclude": ["lib/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./lib/*"],
-      "@dist/*": ["./dist/*"]
+      "@/*": ["./lib/*"]
     }
   }
 }
