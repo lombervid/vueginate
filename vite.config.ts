@@ -10,25 +10,25 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./lib', import.meta.url)),
-      '@dist': fileURLToPath(new URL('./dist', import.meta.url))
-    }
+      '@dist': fileURLToPath(new URL('./dist', import.meta.url)),
+    },
   },
   build: {
     lib: {
       entry: resolve(__dirname, 'lib/main.ts'),
       name: 'Vueginate',
-      fileName: 'vueginate'
+      fileName: 'vueginate',
     },
     rollupOptions: {
       external: ['vue'],
       output: {
         globals: {
-          vue: 'Vue'
-        }
-      }
-    }
+          vue: 'Vue',
+        },
+      },
+    },
   },
   css: {
-    postcss: './demo'
-  }
+    postcss: './demo',
+  },
 })

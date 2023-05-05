@@ -14,7 +14,7 @@ const EMPTY_STYLES: PaginationStyles = Object.freeze({
   arrow: [],
   active: [],
   disabled: [],
-  readers: []
+  readers: [],
 })
 
 describe('useStyles', () => {
@@ -30,19 +30,19 @@ describe('useStyles', () => {
   test.each([
     {
       defaults: false,
-      expected: EMPTY_STYLES
+      expected: EMPTY_STYLES,
     },
     {
       defaults: {},
-      expected: DEFAULT_STYLES
+      expected: DEFAULT_STYLES,
     },
     {
       defaults: { item: ['custom-class'] },
-      expected: { ...DEFAULT_STYLES, item: ['custom-class'] }
+      expected: { ...DEFAULT_STYLES, item: ['custom-class'] },
     },
     {
       defaults: { disabled: [''], active: ['custom-active'] },
-      expected: { ...DEFAULT_STYLES, disabled: [''], active: ['custom-active'] }
+      expected: { ...DEFAULT_STYLES, disabled: [''], active: ['custom-active'] },
     },
     {
       defaults: {
@@ -52,7 +52,7 @@ describe('useStyles', () => {
         arrow: ['custom-arrow'],
         active: ['custom-active'],
         disabled: ['custom-disabled'],
-        readers: ['custom-readers']
+        readers: ['custom-readers'],
       },
       expected: {
         container: ['custom-container'],
@@ -61,9 +61,9 @@ describe('useStyles', () => {
         arrow: ['custom-arrow'],
         active: ['custom-active'],
         disabled: ['custom-disabled'],
-        readers: ['custom-readers']
-      }
-    }
+        readers: ['custom-readers'],
+      },
+    },
   ])('default styles customization', ({ defaults, expected }) => {
     testDefaultStyles.value = defaults
     expect(styles.value).toStrictEqual(expected)
@@ -75,8 +75,8 @@ describe('useStyles', () => {
       custom: { container: ['custom-container'] },
       expected: {
         ...DEFAULT_STYLES,
-        container: [...(DEFAULT_STYLES.container ?? []), 'custom-container']
-      }
+        container: [...(DEFAULT_STYLES.container ?? []), 'custom-container'],
+      },
     },
     {
       custom: {
@@ -86,7 +86,7 @@ describe('useStyles', () => {
         arrow: ['custom-arrow'],
         active: ['custom-active'],
         disabled: ['custom-disabled'],
-        readers: ['custom-readers']
+        readers: ['custom-readers'],
       },
       expected: {
         container: [...(DEFAULT_STYLES.container ?? []), 'custom-container'],
@@ -95,9 +95,9 @@ describe('useStyles', () => {
         arrow: [...(DEFAULT_STYLES.arrow ?? []), 'custom-arrow'],
         active: [...(DEFAULT_STYLES.active ?? []), 'custom-active'],
         disabled: [...(DEFAULT_STYLES.disabled ?? []), 'custom-disabled'],
-        readers: [...(DEFAULT_STYLES.readers ?? []), 'custom-readers']
-      }
-    }
+        readers: [...(DEFAULT_STYLES.readers ?? []), 'custom-readers'],
+      },
+    },
   ])('custom styles ($custom) -> $expected', ({ custom, expected }) => {
     testStyles.value = custom
     expect(styles.value).toStrictEqual(expected)
@@ -110,18 +110,18 @@ describe('useStyles', () => {
       expected: {
         ...DEFAULT_STYLES,
         item: ['default-item'],
-        disabled: [...(DEFAULT_STYLES.disabled ?? []), 'custom-disabled']
-      }
+        disabled: [...(DEFAULT_STYLES.disabled ?? []), 'custom-disabled'],
+      },
     },
     {
       custom: { disabled: ['custom-disabled'] },
       defaults: false,
-      expected: { ...EMPTY_STYLES, disabled: ['custom-disabled'] }
+      expected: { ...EMPTY_STYLES, disabled: ['custom-disabled'] },
     },
     {
       custom: { container: ['custom-container'] },
       defaults: { ...EMPTY_STYLES, container: ['default-container'] },
-      expected: { ...EMPTY_STYLES, container: ['default-container', 'custom-container'] }
+      expected: { ...EMPTY_STYLES, container: ['default-container', 'custom-container'] },
     },
     {
       custom: {
@@ -131,7 +131,7 @@ describe('useStyles', () => {
         arrow: ['custom-arrow'],
         active: ['custom-active'],
         disabled: ['custom-disabled'],
-        readers: ['custom-readers']
+        readers: ['custom-readers'],
       },
       defaults: {
         container: ['default-container'],
@@ -140,7 +140,7 @@ describe('useStyles', () => {
         arrow: ['default-arrow'],
         active: ['default-active'],
         disabled: ['default-disabled'],
-        readers: ['default-readers']
+        readers: ['default-readers'],
       },
       expected: {
         container: ['default-container', 'custom-container'],
@@ -149,9 +149,9 @@ describe('useStyles', () => {
         arrow: ['default-arrow', 'custom-arrow'],
         active: ['default-active', 'custom-active'],
         disabled: ['default-disabled', 'custom-disabled'],
-        readers: ['default-readers', 'custom-readers']
-      }
-    }
+        readers: ['default-readers', 'custom-readers'],
+      },
+    },
   ])(
     'default and custom styles customization ($defaults, $custom) -> $expected',
     ({ custom, defaults, expected }) => {

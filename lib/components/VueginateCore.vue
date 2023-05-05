@@ -16,42 +16,42 @@ const props = defineProps({
     required: true,
     validator(value: number) {
       return Number.isInteger(value) && value >= 0
-    }
+    },
   },
   currentPage: {
     type: Number,
     required: true,
     validator(value: number) {
       return Number.isInteger(value) && value > 0
-    }
+    },
   },
   itemsPerPage: {
     type: Number,
     required: true,
     validator(value: number) {
       return Number.isInteger(value) && value > 0
-    }
+    },
   },
   pagesToShow: {
     type: Number,
     default: 2,
     validator(value: number) {
       return Number.isInteger(value) && value >= -1
-    }
+    },
   },
   visibleAlways: {
-    type: Boolean
+    type: Boolean,
   },
   withDefaultStyles: {
     type: [Object, Boolean] as PropType<PaginationStyles | boolean>,
-    default: true
+    default: true,
   },
   customStyles: {
     type: Object as PropType<PaginationStyles>,
     default: () => {
       return {}
-    }
-  }
+    },
+  },
 })
 
 const meta = toRefs(props)
@@ -80,7 +80,7 @@ function changePage(page: number) {
         :item="{
           isFirst: isFirstPage,
           target: previousPage,
-          cssClass: [styles.item, styles.arrow, isFirstPage ? styles.disabled : []]
+          cssClass: [styles.item, styles.arrow, isFirstPage ? styles.disabled : []],
         }"
         :emit="!isFirstPage ? () => changePage(previousPage) : null"
       >
@@ -146,7 +146,7 @@ function changePage(page: number) {
         :item="{
           isLast: isLastPage,
           target: nextPage,
-          cssClass: [styles.item, styles.arrow, isLastPage ? styles.disabled : []]
+          cssClass: [styles.item, styles.arrow, isLastPage ? styles.disabled : []],
         }"
         :emit="!isLastPage ? () => changePage(nextPage) : null"
       >

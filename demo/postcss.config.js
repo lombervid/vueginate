@@ -1,8 +1,8 @@
 export default {
   plugins: {
     tailwindcss: {
-      config: './demo/tailwind.config.js'
+      config: './demo/tailwind.config.js',
     },
-    autoprefixer: {}
-  }
+    autoprefixer: {},
+  },
 }

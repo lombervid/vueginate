@@ -1,7 +1,7 @@
 export enum PageType {
   Page = 'page',
   Ellipsis = 'ellipsis',
-  Current = 'current'
+  Current = 'current',
 }
 
 export interface PaginationStyles {

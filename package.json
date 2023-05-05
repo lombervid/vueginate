@@ -24,7 +24,7 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "type-check:demo": "vue-tsc --noEmit -p demo/tsconfig.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write lib/ demo/src/ tests/"
+    "format": "prettier --write lib/ demo/src/ demo/*.config.js tests/ .eslintrc.cjs *.config.ts"
   },
   "peerDependencies": {
     "vue": "^3.2.47"
