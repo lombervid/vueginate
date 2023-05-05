@@ -29,7 +29,7 @@ onMounted(async () => {
 
   const style = await createTemplateElement({
     type: 'style',
-    source: { type: 'inline', content: 'body { margin: 0; padding: 10px; }' }
+    source: { type: 'inline', content: 'body { margin: 0; padding: 10px; }' },
   })
 
   if (style) {
@@ -44,7 +44,7 @@ onMounted(async () => {
     name: 'IframeRender',
     setup() {
       return () => (slots.default ? slots.default() : null)
-    }
+    },
   }).mount(el)
 })
 </script>

@@ -12,14 +12,14 @@ const initialData: PaginatonData = Object.freeze({
   currentPage: 9,
   totalItems: 86,
   itemsPerPage: 5,
-  pagesToShow: 2
+  pagesToShow: 2,
 })
 
 const testData = {
   currentPage: ref<number>(initialData.currentPage),
   totalItems: ref<number>(initialData.totalItems),
   itemsPerPage: ref<number>(initialData.itemsPerPage),
-  pagesToShow: ref<number>(initialData.pagesToShow)
+  pagesToShow: ref<number>(initialData.pagesToShow),
 }
 
 const pagination = usePagination(
@@ -43,9 +43,9 @@ const testCases = [
       items: 9,
       ellipsis: [
         { index: 1, value: true },
-        { index: 7, value: true }
-      ]
-    }
+        { index: 7, value: true },
+      ],
+    },
   },
   {
     description: 'first page',
@@ -58,8 +58,8 @@ const testCases = [
       next: 2,
       previous: 1,
       items: 5,
-      ellipsis: [{ index: 3, value: true }]
-    }
+      ellipsis: [{ index: 3, value: true }],
+    },
   },
   {
     description: 'last page',
@@ -72,8 +72,8 @@ const testCases = [
       next: 18,
       previous: 17,
       items: 5,
-      ellipsis: [{ index: 1, value: true }]
-    }
+      ellipsis: [{ index: 1, value: true }],
+    },
   },
   {
     description: 'items per page',
@@ -88,9 +88,9 @@ const testCases = [
       items: 9,
       ellipsis: [
         { index: 1, value: true },
-        { index: 8, value: false }
-      ]
-    }
+        { index: 8, value: false },
+      ],
+    },
   },
   {
     description: 'show all pages',
@@ -103,8 +103,8 @@ const testCases = [
       next: 10,
       previous: 8,
       items: 18,
-      ellipsis: []
-    }
+      ellipsis: [],
+    },
   },
   {
     description: 'do not show pages between ellipsis and current page',
@@ -119,10 +119,10 @@ const testCases = [
       items: 5,
       ellipsis: [
         { index: 1, value: true },
-        { index: 3, value: true }
-      ]
-    }
-  }
+        { index: 3, value: true },
+      ],
+    },
+  },
 ]
 
 function setTestData(data: PaginatonData) {

@@ -15,38 +15,38 @@ defineProps({
     required: true,
     validator(value: number) {
       return Number.isInteger(value) && value >= 0
-    }
+    },
   },
   currentPage: {
     type: Number,
     required: true,
     validator(value: number) {
       return Number.isInteger(value) && value > 0
-    }
+    },
   },
   itemsPerPage: {
     type: Number,
     required: true,
     validator(value: number) {
       return Number.isInteger(value) && value > 0
-    }
+    },
   },
   pagesToShow: {
     type: Number,
     default: 2,
     validator(value: number) {
       return Number.isInteger(value) && value >= -1
-    }
+    },
   },
   visibleAlways: {
-    type: Boolean
+    type: Boolean,
   },
   customStyles: {
     type: Object as PropType<PaginationStyles>,
     default: () => {
       return {}
-    }
-  }
+    },
+  },
 })
 
 function changePage(page: number) {
@@ -70,7 +70,7 @@ function changePage(page: number) {
       active: [],
       arrow: ['p-2'],
       disabled: ['is-disabled'],
-      readers: ['is-sr-only']
+      readers: ['is-sr-only'],
     }"
     :custom-styles="customStyles"
     :visible-always="visibleAlways"

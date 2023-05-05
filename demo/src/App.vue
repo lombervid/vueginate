@@ -16,24 +16,24 @@ const data = reactive({
   total: 86,
   current: 9,
   perPage: 5,
-  toShow: 2
+  toShow: 2,
 })
 </script>
 
 <template>
-  <h1>Vueginate demo</h1>
+  <h1 class="my-5 text-center text-4xl font-bold text-green-800">Vueginate Demo</h1>
 
   <RenderToIFrame
     :type="{
       type: 'style',
       source: {
         type: 'inline',
-        content: coreStyle
-      }
+        content: coreStyle,
+      },
     }"
   >
     <h1 style="text-align: center; border-bottom: 2px solid #171; padding-bottom: 1.25rem">
-      Tailwind Core
+      Default Style
     </h1>
 
     <Vueginate
@@ -58,13 +58,11 @@ const data = reactive({
       type: 'script',
       source: {
         type: 'source',
-        content: 'https://cdn.tailwindcss.com'
-      }
+        content: 'https://cdn.tailwindcss.com',
+      },
     }"
   >
-    <h1 class="mb-5 border-b-2 border-lime-600 pb-5 text-center text-3xl font-bold">
-      Tailwind Pagination
-    </h1>
+    <h1 class="mb-5 border-b-2 border-lime-600 pb-5 text-center text-3xl font-bold">Tailwind</h1>
 
     <VueginateTailwind
       :total-items="data.total"
@@ -82,13 +80,11 @@ const data = reactive({
       type: 'link',
       source: {
         type: 'source',
-        content: 'https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css'
-      }
+        content: 'https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css',
+      },
     }"
   >
-    <h1 class="fw-semibold border-bottom border-info-subtle border-2 text-center">
-      Bootstrap 5 Pagination
-    </h1>
+    <h1 class="fw-semibold border-bottom border-info-subtle border-2 text-center">Bootstrap 5</h1>
 
     <VueginateBootstrap
       :total-items="data.total"
@@ -106,13 +102,11 @@ const data = reactive({
       type: 'link',
       source: {
         type: 'source',
-        content: 'https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css'
-      }
+        content: 'https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css',
+      },
     }"
   >
-    <h1 class="fw-semibold border-bottom border-info-subtle border-2 text-center">
-      Bootstrap 4 Pagination
-    </h1>
+    <h1 class="fw-semibold border-bottom border-info-subtle border-2 text-center">Bootstrap 4</h1>
 
     <VueginateBootstrap
       :total-items="data.total"
@@ -130,13 +124,11 @@ const data = reactive({
       type: 'link',
       source: {
         type: 'source',
-        content: 'https://cdn.jsdelivr.net/npm/bulma@0/css/bulma.min.css'
-      }
+        content: 'https://cdn.jsdelivr.net/npm/bulma@0/css/bulma.min.css',
+      },
     }"
   >
-    <h1 class="has-text-weight-semibold has-text-centered is-size-2 is-bordered pb-4">
-      Bulma Pagination
-    </h1>
+    <h1 class="has-text-weight-semibold has-text-centered is-size-2 is-bordered pb-4">Bulma</h1>
 
     <VueginateBulma
       class="is-centered"

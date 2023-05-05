@@ -13,38 +13,38 @@ defineProps({
     required: true,
     validator(value: number) {
       return Number.isInteger(value) && value >= 0
-    }
+    },
   },
   currentPage: {
     type: Number,
     required: true,
     validator(value: number) {
       return Number.isInteger(value) && value > 0
-    }
+    },
   },
   itemsPerPage: {
     type: Number,
     required: true,
     validator(value: number) {
       return Number.isInteger(value) && value > 0
-    }
+    },
   },
   pagesToShow: {
     type: Number,
     default: 2,
     validator(value: number) {
       return Number.isInteger(value) && value >= -1
-    }
+    },
   },
   visibleAlways: {
-    type: Boolean
+    type: Boolean,
   },
   customStyles: {
     type: Object as PropType<PaginationStyles>,
     default: () => {
       return {}
-    }
-  }
+    },
+  },
 })
 
 function changePage(page: number) {
@@ -70,13 +70,13 @@ function changePage(page: number) {
         'leading-8',
         '[&:not(.active)]:border-gray-300',
         '[&:not(.active)]:[&:not(.disabled)]:hover:border-gray-400',
-        '[&:not(.active)]:[&:not(.disabled)]:hover:bg-gray-50'
+        '[&:not(.active)]:[&:not(.disabled)]:hover:bg-gray-50',
       ],
       page: [],
       active: ['active', 'bg-blue-50', 'text-blue-600', 'border-blue-500'],
       arrow: ['arrow', 'p-2'],
       disabled: ['disabled', 'bg-gray-200', 'opacity-50'],
-      readers: ['sr-only']
+      readers: ['sr-only'],
     }"
     :custom-styles="customStyles"
     :visible-always="visibleAlways"

@@ -108,6 +108,6 @@ export function usePagination(
     previousPage,
     pages,
     isLastPage,
-    nextPage
+    nextPage,
   }
 }
