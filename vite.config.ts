@@ -22,6 +22,9 @@ export default defineConfig({
     rollupOptions: {
       external: ['vue'],
       output: {
+        assetFileNames: (assetInfo) => {
+          return assetInfo.name === 'style.css' ? 'css/vueginate.css' : assetInfo.name ?? ''
+        },
         globals: {
           vue: 'Vue',
         },

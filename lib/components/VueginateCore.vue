@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { usePagination } from '@/composables/pagination'
-import { useStyles } from '@/composables/styles'
-import type { PaginationStyles } from '@/types'
-import { computed, toRefs, type PropType } from 'vue'
+import type { PropType } from 'vue'
+import { computed, toRefs } from 'vue'
+import { usePagination } from '../composables/pagination'
+import { useStyles } from '../composables/styles'
+import type { PaginationStyles } from '../types'
 import NextIcon from './Icons/NextIcon.vue'
 import PreviousIcon from './Icons/PreviousIcon.vue'
 
@@ -44,11 +45,11 @@ const props = defineProps({
   },
   withDefaultStyles: {
     type: [Object, Boolean] as PropType<PaginationStyles | boolean>,
-    default: true,
+    default: (): PaginationStyles | boolean => true,
   },
   customStyles: {
     type: Object as PropType<PaginationStyles>,
-    default: () => {
+    default: (): PaginationStyles => {
       return {}
     },
   },
