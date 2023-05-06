@@ -1,5 +1,6 @@
-import type { PaginationStyles } from '@/types'
-import { computed, type ComputedRef, type Ref } from 'vue'
+import type { ComputedRef, Ref } from 'vue'
+import { computed } from 'vue'
+import type { PaginationStyles } from '../types'
 
 export const DEFAULT_STYLES: PaginationStyles = Object.freeze({
   container: ['vueginate-container'],

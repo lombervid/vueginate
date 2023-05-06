@@ -1,6 +1,6 @@
-import { PageInfo, PageType } from '@/types'
 import type { Ref } from 'vue'
 import { computed, warn } from 'vue'
+import { PageInfo, PageType } from '../types'
 
 Math.trunc =
   Math.trunc ||

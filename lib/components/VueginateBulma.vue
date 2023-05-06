@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { PaginationStyles } from '@/types'
 import type { PropType } from 'vue'
-import VueginateCore from './VueginateCore.vue'
-import PreviousIcon from './Icons/PreviousIcon.vue'
+import type { PaginationStyles } from '../types'
 import NextIcon from './Icons/NextIcon.vue'
+import PreviousIcon from './Icons/PreviousIcon.vue'
+import VueginateCore from './VueginateCore.vue'
 
 const emits = defineEmits<{
   (e: 'page-change', page: number): void
@@ -43,7 +43,7 @@ defineProps({
   },
   customStyles: {
     type: Object as PropType<PaginationStyles>,
-    default: () => {
+    default: (): PaginationStyles => {
       return {}
     },
   },

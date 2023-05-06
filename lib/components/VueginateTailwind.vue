@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { PaginationStyles } from '@/types'
 import type { PropType } from 'vue'
+import type { PaginationStyles } from '../types'
 import VueginateCore from './VueginateCore.vue'
 
 const emits = defineEmits<{
@@ -41,7 +41,7 @@ defineProps({
   },
   customStyles: {
     type: Object as PropType<PaginationStyles>,
-    default: () => {
+    default: (): PaginationStyles => {
       return {}
     },
   },
