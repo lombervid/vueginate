@@ -4,7 +4,7 @@ import VueginateCore from './components/VueginateCore.vue'
 import VueginateTailwind from './components/VueginateTailwind.vue'
 import type { PaginationStyles } from './types'
 
-import './style.css'
+import './main.css'
 
 export {
   VueginateCore as Vueginate,
