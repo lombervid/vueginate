@@ -3,6 +3,24 @@
   "version": "1.0.0",
   "private": false,
   "type": "module",
+  "description": "A simple pagination component for Vue 3",
+  "keywords": [
+    "Vue",
+    "Vue.js",
+    "Vue 3",
+    "Pagination",
+    "Component"
+  ],
+  "license": "MIT",
+  "author": "David Lombera (https://github.com/lombervid)",
+  "homepage": "https://github.com/lombervid/vueginate#readme",
+  "repository": {
+    "type": "git",
+    "directory": "https://github.com/lombervid/vueginate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lombervid/vueginate/issues"
+  },
   "files": [
     "dist"
   ],
