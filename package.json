@@ -26,14 +26,16 @@
   ],
   "main": "./dist/vueginate.umd.cjs",
   "module": "./dist/vueginate.js",
-  "style": "./dist/css/vueginate.css",
   "types": "./dist/vueginate.d.ts",
+  "style": "./dist/css/vueginate.css",
   "exports": {
     ".": {
+      "style": "./dist/css/vueginate.css",
       "types": "./dist/vueginate.d.ts",
       "import": "./dist/vueginate.js",
       "require": "./dist/vueginate.umd.cjs"
-    }
+    },
+    "./css/vueginate.css": "./dist/css/vueginate.css"
   },
   "scripts": {
     "dev": "vite demo --config ./vite.config.ts",
