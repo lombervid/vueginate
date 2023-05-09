@@ -2,7 +2,7 @@
 
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/lombervid/vueginate?display_name=tag&sort=semver)](https://github.com/lombervid/vueginate)
 [![npm](https://img.shields.io/npm/v/vueginate)](https://www.npmjs.com/package/vueginate)
-[![tests](https://github.com/lombervid/vueginate/actions/workflows/tests.yml/badge.svg)](https://github.com/lombervid/vueginate/actions/workflows/tests.yml)
+[![tests](https://github.com/lombervid/vueginate/actions/workflows/tests.yml/badge.svg)](https://github.com/lombervid/vueginate/actions/workflows/tests.yml?query=branch%3Amain)
 [![GitHub](https://img.shields.io/github/license/lombervid/vueginate)](https://github.com/lombervid/vueginate/blob/main/LICENSE)
 
 </div>
