@@ -4,7 +4,7 @@ import { reactive } from 'vue'
 import RenderToIFrame from './components/RenderToIFrame.vue'
 
 const coreStyle = async (): Promise<string> => {
-  return (await import('@dist/style.css?inline')).default.toString()
+  return (await import('@dist/css/vueginate.css?inline')).default.toString()
 }
 
 function change(page: number) {
