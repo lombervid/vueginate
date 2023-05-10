@@ -162,6 +162,28 @@ All classes are applied to the `a` (or `span` if disabled or active) element ins
 </template>
 ```
 
+## Events
+
+**_Vueginate_** triggers a `pageChange` event, passing a `number` parameter with the new page, every time the page changes.
+
+```html
+<script setup>
+  // ...
+  function updateData(page: number) {
+    data.currentPage = page
+  }
+</script>
+
+<template>
+  <Vueginate
+    :total-items="data.totalItems"
+    :current-page="data.currentPage"
+    :items-per-page="data.itemsPerPage"
+    @page-change="updateData"
+  />
+</template>
+```
+
 ## Roadmap
 
 - [ ] Documentation
