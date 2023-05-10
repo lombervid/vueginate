@@ -112,7 +112,7 @@ or from your style:
 
 ### Custom styles
 
-Or your can style your component base in the classes it has:
+Or you can style your component based in the classes it provides:
 
 - `vueginate-container`: pagination container `ul`
 - `vg-item`: every item in the list
