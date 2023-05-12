@@ -1,0 +1,25 @@
+{
+  "name": "@vueginate/demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "type-check": "vue-tsc --noEmit -p -composite false"
+  },
+  "dependencies": {
+    "vue": "^3.2.47",
+    "vueginate": "workspace:^"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.1",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0",
+    "vue-tsc": "^1.2.0"
+  }
+}

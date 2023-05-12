@@ -31,7 +31,4 @@ export default defineConfig({
       },
     },
   },
-  css: {
-    postcss: './demo',
-  },
 })

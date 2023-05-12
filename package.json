@@ -6,6 +6,13 @@
     "packages/*"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "pnpm run --filter vueginate build",
+    "test": "pnpm run --filter vueginate test",
+    "type-check": "pnpm run --filter vueginate type-check",
+    "dev": "pnpm run --filter @vueginate/demo dev",
+    "demo:build": "pnpm run --filter @vueginate/demo build",
+    "demo:type-check": "pnpm run --filter @vueginate/demo type-check",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write packages/vueginate/lib packages/vueginate/tests packages/demo/src .eslintrc.cjs **/*.config.ts"
   }
 }

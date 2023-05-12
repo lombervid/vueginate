@@ -38,17 +38,12 @@
     "./css/vueginate.css": "./dist/css/vueginate.css"
   },
   "scripts": {
-    "dev": "vite demo --config ./vite.config.ts",
-    "build": "run-p type-check:lib build-only",
+    "build": "run-p type-check build-only",
     "preview": "vite preview",
     "test": "vitest",
-    "build-only": "vite build && pnpm tsc-types",
-    "tsc-types": "sh build/tsc-types.sh",
-    "type-check": "run-s type-check:lib type-check:demo",
-    "type-check:lib": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "type-check:demo": "vue-tsc --noEmit -p demo/tsconfig.json --composite false",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write lib/ demo/src/ demo/*.config.js tests/ .eslintrc.cjs *.config.ts"
+    "build-only": "vite build && pnpm build:types",
+    "build:types": "sh build/types.sh",
+    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
