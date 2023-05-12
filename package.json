@@ -9,10 +9,10 @@
     "build": "pnpm run --filter vueginate build",
     "test": "pnpm run --filter vueginate test",
     "type-check": "pnpm run --filter vueginate type-check",
-    "dev": "pnpm run --filter @vueginate/demo dev",
+    "demo": "pnpm run --filter @vueginate/demo dev",
     "demo:build": "pnpm run --filter @vueginate/demo build",
     "demo:type-check": "pnpm run --filter @vueginate/demo type-check",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write packages/*/src packages/vueginate/tests .eslintrc.cjs **/*.config.ts"
+    "format": "prettier --write packages/*/src/**/* packages/vueginate/tests .eslintrc.cjs **/*.config.ts"
   }
 }
