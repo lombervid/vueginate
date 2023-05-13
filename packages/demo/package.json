@@ -4,13 +4,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "pnpm type-check && vite build",
     "preview": "vite preview",
     "type-check": "vue-tsc --noEmit -composite false"
   },
   "dependencies": {
     "vue": "^3.2.47",
-    "vueginate": "^1.0.0"
+    "vueginate": "workspace:^"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
