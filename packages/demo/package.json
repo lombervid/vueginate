@@ -4,7 +4,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "pnpm type-check && vite build",
+    "build": "run-s build:vueginate build:app",
+    "build:app": "npm run type-check && vite build",
+    "build:vueginate": "npm run --workspace vueginate build",
     "preview": "vite preview",
     "type-check": "vue-tsc --noEmit -composite false"
   },
