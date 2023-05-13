@@ -41,7 +41,7 @@ importers:
         specifier: ^3.2.47
         version: 3.2.47
       vueginate:
-        specifier: workspace:^
+        specifier: ^1.0.0
         version: link:../vueginate
     devDependencies:
       '@vitejs/plugin-vue':
@@ -2916,8 +2916,8 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup@3.21.6:
-    resolution: {integrity: sha512-SXIICxvxQxR3D4dp/3LDHZIJPC8a4anKMHd4E3Jiz2/JnY+2bEjqrOokAauc5ShGVNFHlEFjBXAXlaxkJqIqSg==}
+  /rollup@3.21.7:
+    resolution: {integrity: sha512-KXPaEuR8FfUoK2uHwNjxTmJ18ApyvD6zJpYv9FOJSqLStmt6xOY84l1IjK2dSolQmoXknrhEFRaPRgOPdqCT5w==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -3423,7 +3423,7 @@ packages:
       '@types/node': 18.14.2
       esbuild: 0.17.19
       postcss: 8.4.23
-      rollup: 3.21.6
+      rollup: 3.21.7
     optionalDependencies:
       fsevents: 2.3.2
     dev: true

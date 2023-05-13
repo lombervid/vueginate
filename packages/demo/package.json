@@ -1,5 +1,6 @@
 {
   "name": "@vueginate/demo",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,7 +13,7 @@
   },
   "dependencies": {
     "vue": "^3.2.47",
-    "vueginate": "workspace:^"
+    "vueginate": "^1.0.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",

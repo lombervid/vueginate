@@ -6,14 +6,14 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "pnpm run --filter vueginate build",
-    "test": "pnpm run --filter vueginate test",
+    "build": "npm run --workspace vueginate build",
+    "test": "npm run --workspace vueginate test",
     "type-check": "run-p type-check:app type-check:demo",
-    "type-check:app": "pnpm run --filter vueginate type-check",
-    "type-check:demo": "pnpm run --filter @vueginate/demo type-check",
-    "demo": "pnpm run --filter @vueginate/demo dev",
-    "demo:build": "pnpm run --filter @vueginate/demo build",
-    "demo:type-check": "pnpm run --filter @vueginate/demo type-check",
+    "type-check:app": "npm run --workspace vueginate type-check",
+    "type-check:demo": "npm run --workspace @vueginate/demo type-check",
+    "demo": "npm run --workspace @vueginate/demo dev",
+    "demo:build": "npm run --workspace @vueginate/demo build",
+    "demo:type-check": "npm run --workspace @vueginate/demo type-check",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write packages/*/src/**/* packages/vueginate/tests .eslintrc.cjs **/*.config.ts"
   },

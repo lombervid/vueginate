@@ -38,11 +38,11 @@
     "./css/vueginate.css": "./dist/css/vueginate.css"
   },
   "scripts": {
-    "release": "sh scripts/release.sh",
+    "release": "npm run build && sh scripts/release.sh",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "test": "vitest",
-    "build-only": "vite build && pnpm build:types",
+    "build-only": "vite build && npm run build:types",
     "build:types": "sh scripts/types.sh",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
   },
