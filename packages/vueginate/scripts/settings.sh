@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+CURRENT_DIR="$(dirname "$(readlink -f "$0")")"
+
+declare -r PACKAGE_DIR="$(dirname ${CURRENT_DIR})"
+declare -r PACKAGES_DIR="$(dirname ${PACKAGE_DIR})"
+declare -r ROOT_DIR="$(dirname ${PACKAGES_DIR})"
+declare -r SCRIPT="$( basename "$0")"
+
 # Reset
 Reset='\033[0m'       # Text Reset
 
@@ -14,5 +21,6 @@ Cyan='\033[0;36m'         # Cyan
 White='\033[0;37m'        # White
 
 function print() {
-    echo -e "${Cyan}[build:tsc-types]${Reset} ${Green}${1:-}${Reset}"
+    COLOR="${2:-Cyan}"
+    echo -e "${!COLOR}[script:${SCRIPT%.sh}]${Reset} ${Green}${1:-}${Reset}"
 }

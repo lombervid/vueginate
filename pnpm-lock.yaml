@@ -2,83 +2,20 @@ lockfileVersion: '6.0'
 
 importers:
 
-  .: {}
-
-  packages/demo:
-    dependencies:
-      vue:
-        specifier: ^3.2.47
-        version: 3.2.47
-      vueginate:
-        specifier: ^1.0.0
-        version: link:../vueginate
-    devDependencies:
-      '@types/node':
-        specifier: ^18.14.2
-        version: 18.14.2
-      '@vitejs/plugin-vue':
-        specifier: ^4.0.0
-        version: 4.0.0(vite@4.3.1)(vue@3.2.47)
-      '@vue/tsconfig':
-        specifier: ^0.1.3
-        version: 0.1.3(@types/node@18.14.2)
-      autoprefixer:
-        specifier: ^10.4.14
-        version: 10.4.14(postcss@8.4.23)
-      postcss:
-        specifier: ^8.4.23
-        version: 8.4.23
-      tailwindcss:
-        specifier: ^3.3.1
-        version: 3.3.1(postcss@8.4.23)
-      typescript:
-        specifier: ~4.8.4
-        version: 4.8.4
-      vite:
-        specifier: ^4.3.1
-        version: 4.3.1(@types/node@18.14.2)
-      vue-tsc:
-        specifier: ^1.6.4
-        version: 1.6.4(typescript@4.8.4)
-
-  packages/vueginate:
+  .:
     devDependencies:
       '@rushstack/eslint-patch':
         specifier: ^1.2.0
         version: 1.2.0
-      '@types/jsdom':
-        specifier: ^21.1.0
-        version: 21.1.0
       '@types/node':
         specifier: ^18.14.2
         version: 18.14.2
-      '@vitejs/plugin-vue':
-        specifier: ^4.0.0
-        version: 4.0.0(vite@4.3.1)(vue@3.2.47)
-      '@vue/eslint-config-prettier':
-        specifier: ^7.1.0
-        version: 7.1.0(eslint@8.34.0)(prettier@2.8.4)
-      '@vue/eslint-config-typescript':
-        specifier: ^11.0.2
-        version: 11.0.2(eslint-plugin-vue@9.9.0)(eslint@8.34.0)(typescript@4.8.4)
-      '@vue/test-utils':
-        specifier: ^2.3.0
-        version: 2.3.0(vue@3.2.47)
-      '@vue/tsconfig':
-        specifier: ^0.1.3
-        version: 0.1.3(@types/node@18.14.2)
       autoprefixer:
         specifier: ^10.4.14
         version: 10.4.14(postcss@8.4.23)
       eslint:
         specifier: ^8.34.0
         version: 8.34.0
-      eslint-plugin-vue:
-        specifier: ^9.9.0
-        version: 9.9.0(eslint@8.34.0)
-      jsdom:
-        specifier: ^21.1.0
-        version: 21.1.0
       npm-run-all:
         specifier: ^4.1.5
         version: 4.1.5
@@ -97,6 +34,55 @@ importers:
       typescript:
         specifier: ~4.8.4
         version: 4.8.4
+
+  packages/demo:
+    dependencies:
+      vue:
+        specifier: ^3.2.47
+        version: 3.2.47
+      vueginate:
+        specifier: ^1.0.0
+        version: link:../vueginate
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^4.0.0
+        version: 4.0.0(vite@4.3.1)(vue@3.2.47)
+      '@vue/tsconfig':
+        specifier: ^0.1.3
+        version: 0.1.3(@types/node@18.14.2)
+      vite:
+        specifier: ^4.3.1
+        version: 4.3.1(@types/node@18.14.2)
+      vue-tsc:
+        specifier: ^1.6.4
+        version: 1.6.4(typescript@4.8.4)
+
+  packages/vueginate:
+    devDependencies:
+      '@types/jsdom':
+        specifier: ^21.1.0
+        version: 21.1.0
+      '@vitejs/plugin-vue':
+        specifier: ^4.0.0
+        version: 4.0.0(vite@4.3.1)(vue@3.2.47)
+      '@vue/eslint-config-prettier':
+        specifier: ^7.1.0
+        version: 7.1.0(eslint@8.34.0)(prettier@2.8.4)
+      '@vue/eslint-config-typescript':
+        specifier: ^11.0.2
+        version: 11.0.2(eslint-plugin-vue@9.9.0)(eslint@8.34.0)(typescript@4.8.4)
+      '@vue/test-utils':
+        specifier: ^2.3.0
+        version: 2.3.0(vue@3.2.47)
+      '@vue/tsconfig':
+        specifier: ^0.1.3
+        version: 0.1.3(@types/node@18.14.2)
+      eslint-plugin-vue:
+        specifier: ^9.9.0
+        version: 9.9.0(eslint@8.34.0)
+      jsdom:
+        specifier: ^21.1.0
+        version: 21.1.0
       vite:
         specifier: ^4.3.1
         version: 4.3.1(@types/node@18.14.2)
