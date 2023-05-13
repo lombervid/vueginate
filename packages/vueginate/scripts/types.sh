@@ -4,11 +4,13 @@ set -e          # Abort on nonzero exit status
 set -u          # Abort on unbound variable
 set -o pipefail # Do not hide errors within pipes
 
-source ./build/colors.sh
+declare -r SCRIPTS_DIR="$(dirname "$(readlink -f "$0")")"
+
+source "${SCRIPTS_DIR}/settings.sh"
 
 function generate_types {
     print "Generating type declarations..."
-    vue-tsc --declaration --emitDeclarationOnly --outDir dist/types --rootDir lib/ --project tsconfig.app.json
+    vue-tsc --declaration --emitDeclarationOnly --outDir dist/types --rootDir src/ --project tsconfig.app.json
 }
 
 function remove_build_info_file {

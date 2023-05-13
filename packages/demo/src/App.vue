@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Vueginate, VueginateBootstrap, VueginateBulma, VueginateTailwind } from '@/main'
+import { Vueginate, VueginateBootstrap, VueginateBulma, VueginateTailwind } from 'vueginate'
 import { reactive } from 'vue'
 import RenderToIFrame from './components/RenderToIFrame.vue'
 
 const coreStyle = async (): Promise<string> => {
-  return (await import('@dist/css/vueginate.css?inline')).default.toString()
+  return (await import('vueginate/css/vueginate.css')).default.toString()
 }
 
 function change(page: number) {

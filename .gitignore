@@ -26,3 +26,7 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+# Package README/LICENSE
+packages/*/README.md
+packages/*/LICENSE
