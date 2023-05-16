@@ -1,6 +1,6 @@
 <div align="center">
 
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/lombervid/vueginate?display_name=tag&sort=semver)](https://github.com/lombervid/vueginate)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/lombervid/vueginate?display_name=tag&sort=semver)](https://github.com/lombervid/vueginate/releases/latest)
 [![npm](https://img.shields.io/npm/v/vueginate)](https://www.npmjs.com/package/vueginate)
 [![tests](https://github.com/lombervid/vueginate/actions/workflows/tests.yml/badge.svg)](https://github.com/lombervid/vueginate/actions/workflows/tests.yml?query=branch%3Amain)
 [![GitHub](https://img.shields.io/github/license/lombervid/vueginate)](https://github.com/lombervid/vueginate/blob/main/LICENSE)
@@ -13,6 +13,8 @@
 
 **_Vueginate_** is a simple pagination component for Vue 3 applications. It includes out-of-the-box component variants for some of the most popular CSS Frameworks, such as [_Tailwind CSS_](https://tailwindcss.com/), [_Bootstrap_](https://getbootstrap.com/) (4 and 5) and [_Bulma_](https://bulma.io/).
 
+## 👉 [Demo](https://vueginate-demo.vercel.app/)
+
 ## Installation
 
 ```sh
@@ -20,7 +22,7 @@
 pnpm add vueginate
 ```
 
-## Usage
+## Basic usage
 
 ### Import the component
 
@@ -47,7 +49,8 @@ Import the component and use it in your template.
 </template>
 ```
 
-The above example will generate a code similar to the following:
+<details>
+<summary>The above example will generate a code similar to the following: (click to show)</summary>
 
 ```html
 <nav aria-label="Page navigation">
@@ -87,6 +90,30 @@ The above example will generate a code similar to the following:
     </li>
   </ul>
 </nav>
+```
+
+</details>
+
+### Events
+
+**_Vueginate_** triggers a `pageChange` event, passing a `number` parameter with the new page, every time the page changes.
+
+```html
+<script setup>
+  // ...
+  function updateData(page: number) {
+    data.currentPage = page
+  }
+</script>
+
+<template>
+  <Vueginate
+    :total-items="data.totalItems"
+    :current-page="data.currentPage"
+    :items-per-page="data.itemsPerPage"
+    @page-change="updateData"
+  />
+</template>
 ```
 
 ## Styling your component
@@ -129,16 +156,11 @@ All classes are applied to the `a` (or `span` if disabled or active) element ins
 
 ```html
 <script setup>
-  import { reactive } from 'vue'
   import { VueginateTailwind } from 'vueginate'
   import { VueginateBootstrap } from 'vueginate'
   import { VueginateBulma } from 'vueginate'
 
-  const data = reactive({
-    totalItems: 86,
-    currentPage: 9,
-    itemsPerPage: 5,
-  })
+  // ...
 </script>
 
 <template>
@@ -158,28 +180,6 @@ All classes are applied to the `a` (or `span` if disabled or active) element ins
     :total-items="data.totalItems"
     :current-page="data.currentPage"
     :items-per-page="data.itemsPerPage"
-  />
-</template>
-```
-
-## Events
-
-**_Vueginate_** triggers a `pageChange` event, passing a `number` parameter with the new page, every time the page changes.
-
-```html
-<script setup>
-  // ...
-  function updateData(page: number) {
-    data.currentPage = page
-  }
-</script>
-
-<template>
-  <Vueginate
-    :total-items="data.totalItems"
-    :current-page="data.currentPage"
-    :items-per-page="data.itemsPerPage"
-    @page-change="updateData"
   />
 </template>
 ```
