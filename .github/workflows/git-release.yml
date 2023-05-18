@@ -1,8 +1,13 @@
 name: Create Release
+
 on:
   push:
     tags:
       - 'v*'
+
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Create Release
@@ -10,14 +15,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Copy Changelog
-        uses: canastro/copy-file-action@master
-        with:
-          source: 'packages/vueginate/CHANGELOG.md'
-          target: 'CHANGELOG.md'
-
       - name: Git Release
-        uses: anton-yurchenko/git-release@v5.0.2
+        uses: docker://antonyurchenko/git-release:v5
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          CHANGELOG_FILE: 'packages/vueginate/CHANGELOG.md'
