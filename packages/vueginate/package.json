@@ -43,7 +43,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "build-only": "vite build && npm run build:types",
-    "build:types": "sh scripts/types.sh",
+    "build:types": "bash scripts/types.sh",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
   },
   "devDependencies": {
