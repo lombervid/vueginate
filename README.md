@@ -13,7 +13,9 @@
 
 **_Vueginate_** is a simple pagination component for Vue 3 applications. It includes out-of-the-box component variants for some of the most popular CSS Frameworks, such as [_Tailwind CSS_](https://tailwindcss.com/), [_Bootstrap_](https://getbootstrap.com/) (4 and 5) and [_Bulma_](https://bulma.io/).
 
-## 👉 [Demo](https://vueginate-demo.vercel.app/)
+## ➜ [Demo](https://vueginate-demo.vercel.app/)
+
+## ➜ [Try it on StackBlitz](https://stackblitz.com/edit/vueginate?file=src%2FApp.vue)
 
 ## Installation
 
