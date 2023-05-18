@@ -11,8 +11,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Copy Changelog
+        uses: canastro/copy-file-action@master
+        with:
+          source: 'packages/vueginate/CHANGELOG.md'
+          target: 'CHANGELOG.md'
+
       - name: Git Release
         uses: anton-yurchenko/git-release@v5.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CHANGELOG_FILE: 'packages/vueginate/CHANGELOG.md'
