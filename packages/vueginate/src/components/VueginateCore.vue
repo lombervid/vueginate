@@ -53,6 +53,10 @@ const props = defineProps({
       return {}
     },
   },
+  fixedLength: {
+    type: Boolean,
+    default: true,
+  },
 })
 
 const meta = toRefs(props)
@@ -63,7 +67,13 @@ const styles = useStyles(meta.customStyles, meta.withDefaultStyles)
 // Pagination composable
 const showComponent = computed(() => props.visibleAlways || totalPages.value > 1)
 const { totalPages, currentPage, isFirstPage, previousPage, pages, isLastPage, nextPage } =
-  usePagination(meta.currentPage, meta.totalItems, meta.itemsPerPage, meta.pagesToShow)
+  usePagination(
+    meta.currentPage,
+    meta.totalItems,
+    meta.itemsPerPage,
+    meta.pagesToShow,
+    meta.fixedLength
+  )
 
 function changePage(page: number) {
   if (page < 1 || page > totalPages.value || page === currentPage.value) {

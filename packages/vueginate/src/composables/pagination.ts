@@ -12,7 +12,8 @@ export function usePagination(
   current: Ref<number>,
   total: Ref<number>,
   perPage: Ref<number>,
-  pagesToShow: Ref<number>
+  pagesToShow: Ref<number>,
+  fixedLength: Ref<boolean>
 ) {
   const toShow = computed(() => Math.trunc(pagesToShow.value))
   const totalPages = computed(() => {
@@ -45,6 +46,34 @@ export function usePagination(
     isFirstPage.value ? currentPage.value : currentPage.value - 1
   )
 
+  const rightPadSize = computed(() => {
+    if (!fixedLength.value) {
+      return toShow.value
+    }
+
+    const startMissingItems = 1 + toShow.value + 2 - currentPage.value
+
+    if (startMissingItems <= 0) {
+      return toShow.value
+    }
+
+    return toShow.value + startMissingItems
+  })
+
+  const leftPadSize = computed(() => {
+    if (!fixedLength.value) {
+      return toShow.value
+    }
+
+    const endMissingItems = currentPage.value - (totalPages.value - toShow.value - 2)
+
+    if (endMissingItems <= 0) {
+      return toShow.value
+    }
+
+    return toShow.value + endMissingItems
+  })
+
   const pages = computed<PageInfo[]>(() => {
     const pagesColl: PageInfo[] = []
 
@@ -53,7 +82,7 @@ export function usePagination(
 
       if (page.isEllipsis()) {
         const next =
-          i < currentPage.value ? currentPage.value - (toShow.value + 1) : totalPages.value - 1
+          i < currentPage.value ? currentPage.value - (leftPadSize.value + 1) : totalPages.value - 1
 
         if (i < next) {
           i = next
@@ -88,17 +117,14 @@ export function usePagination(
     }
 
     if (page < currentPage.value) {
-      const nextPage = currentPage.value - toShow.value
+      const nextPage = currentPage.value - leftPadSize.value
 
-      return (page === 2 && nextPage > 3) || (page > 2 && page < nextPage)
+      return page > 1 && page < nextPage - 1
     }
 
-    const lastPage = currentPage.value + toShow.value
+    const lastPage = currentPage.value + rightPadSize.value
 
-    return (
-      (page === lastPage + 1 && page < totalPages.value - 1) ||
-      (page > lastPage + 1 && page < totalPages.value)
-    )
+    return page < totalPages.value - 1 && page > lastPage
   }
 
   return {

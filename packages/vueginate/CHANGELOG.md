@@ -2,6 +2,10 @@
 
 ## [Unreleased](https://github.com/lombervid/vueginate/compare/v1.0.0...main)
 
+### Added
+
+- Add new `fixedLength` prop option
+
 ### Changed
 
 - Set `vue` as peer dependency

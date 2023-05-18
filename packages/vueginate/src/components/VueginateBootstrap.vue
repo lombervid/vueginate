@@ -45,6 +45,10 @@ defineProps({
       return {}
     },
   },
+  fixedLength: {
+    type: Boolean,
+    default: true,
+  },
 })
 
 function changePage(page: number) {
@@ -69,6 +73,7 @@ function changePage(page: number) {
     }"
     :custom-styles="customStyles"
     :visible-always="visibleAlways"
+    :fixed-length="fixedLength"
     @page-change="changePage"
   >
     <template #previous="{ item }">
