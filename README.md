@@ -67,15 +67,33 @@ Import the component and use it in your template.
         </svg>
       </a>
     </li>
-    <li><a class="vg-item vg-page" href="#">1</a></li>
-    <li><span class="vg-item vg-disabled">…</span></li>
-    <li><a class="vg-item vg-page" href="#">7</a></li>
-    <li><a class="vg-item vg-page" href="#">8</a></li>
-    <li><span class="vg-item vg-active" aria-current="page">9</span></li>
-    <li><a class="vg-item vg-page" href="#">10</a></li>
-    <li><a class="vg-item vg-page" href="#">11</a></li>
-    <li><span class="vg-item vg-disabled">…</span></li>
-    <li><a class="vg-item vg-page" href="#">18</a></li>
+    <li>
+      <a class="vg-item vg-page" href="#">1</a>
+    </li>
+    <li>
+      <span class="vg-item vg-disabled">…</span>
+    </li>
+    <li>
+      <a class="vg-item vg-page" href="#">7</a>
+    </li>
+    <li>
+      <a class="vg-item vg-page" href="#">8</a>
+    </li>
+    <li>
+      <span class="vg-item vg-active" aria-current="page">9</span>
+    </li>
+    <li>
+      <a class="vg-item vg-page" href="#">10</a>
+    </li>
+    <li>
+      <a class="vg-item vg-page" href="#">11</a>
+    </li>
+    <li>
+      <span class="vg-item vg-disabled">…</span>
+    </li>
+    <li>
+      <a class="vg-item vg-page" href="#">18</a>
+    </li>
     <li>
       <a class="vg-item vg-arrow" href="#">
         <span class="sr-only">Next Page</span>
