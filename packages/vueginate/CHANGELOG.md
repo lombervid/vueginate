@@ -5,6 +5,7 @@
 ### Added
 
 - Add new `fixedLength` prop option
+- Add new `containerType` prop option
 
 ### Changed
 

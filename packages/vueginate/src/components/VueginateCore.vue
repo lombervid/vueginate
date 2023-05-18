@@ -57,6 +57,13 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  containerType: {
+    type: String as PropType<'ul' | 'div'>,
+    default: 'ul',
+    validator(value: string) {
+      return ['ul', 'div'].includes(value)
+    },
+  },
 })
 
 const meta = toRefs(props)
@@ -85,7 +92,7 @@ function changePage(page: number) {
 </script>
 <template>
   <nav v-if="showComponent" aria-label="Page navigation">
-    <ul :class="[styles.container]">
+    <component :is="containerType" :class="[styles.container]">
       <slot
         name="previous"
         :item="{
@@ -178,6 +185,6 @@ function changePage(page: number) {
           </span>
         </li>
       </slot>
-    </ul>
+    </component>
   </nav>
 </template>

@@ -187,7 +187,7 @@ All classes are applied to the `a` (or `span` if disabled or active) element ins
 ## Roadmap
 
 - [ ] Documentation
-- [ ] Support to be able to change the default `ul` container to `div`
+- [x] Support to be able to change the default `ul` container to `div`
 - [x] Support to have a fixed size for the component
 
 ## License
