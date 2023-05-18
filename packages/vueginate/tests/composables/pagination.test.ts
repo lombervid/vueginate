@@ -6,6 +6,7 @@ type PaginatonData = {
   totalItems: number
   itemsPerPage: number
   pagesToShow: number
+  fixedLength: boolean
 }
 
 const initialData: PaginatonData = Object.freeze({
@@ -13,6 +14,7 @@ const initialData: PaginatonData = Object.freeze({
   totalItems: 86,
   itemsPerPage: 5,
   pagesToShow: 2,
+  fixedLength: false,
 })
 
 const testData = {
@@ -20,19 +22,21 @@ const testData = {
   totalItems: ref<number>(initialData.totalItems),
   itemsPerPage: ref<number>(initialData.itemsPerPage),
   pagesToShow: ref<number>(initialData.pagesToShow),
+  fixedLength: ref<boolean>(initialData.fixedLength),
 }
 
 const pagination = usePagination(
   testData.currentPage,
   testData.totalItems,
   testData.itemsPerPage,
-  testData.pagesToShow
+  testData.pagesToShow,
+  testData.fixedLength
 )
 
 const testCases = [
   {
     description: 'middle current page',
-    data: { currentPage: 9, totalItems: 86, itemsPerPage: 5, pagesToShow: 2 },
+    data: { currentPage: 9, totalItems: 86, itemsPerPage: 5, pagesToShow: 2, fixedLength: false },
     expected: {
       current: 9,
       total: 18,
@@ -49,7 +53,7 @@ const testCases = [
   },
   {
     description: 'first page',
-    data: { currentPage: 1, totalItems: 86, itemsPerPage: 5, pagesToShow: 2 },
+    data: { currentPage: 1, totalItems: 86, itemsPerPage: 5, pagesToShow: 2, fixedLength: false },
     expected: {
       current: 1,
       total: 18,
@@ -63,7 +67,7 @@ const testCases = [
   },
   {
     description: 'last page',
-    data: { currentPage: 18, totalItems: 86, itemsPerPage: 5, pagesToShow: 2 },
+    data: { currentPage: 18, totalItems: 86, itemsPerPage: 5, pagesToShow: 2, fixedLength: false },
     expected: {
       current: 18,
       total: 18,
@@ -77,7 +81,7 @@ const testCases = [
   },
   {
     description: 'items per page',
-    data: { currentPage: 9, totalItems: 86, itemsPerPage: 7, pagesToShow: 2 },
+    data: { currentPage: 9, totalItems: 86, itemsPerPage: 7, pagesToShow: 2, fixedLength: false },
     expected: {
       current: 9,
       total: 13,
@@ -94,7 +98,7 @@ const testCases = [
   },
   {
     description: 'show all pages',
-    data: { currentPage: 9, totalItems: 86, itemsPerPage: 5, pagesToShow: -1 },
+    data: { currentPage: 9, totalItems: 86, itemsPerPage: 5, pagesToShow: -1, fixedLength: false },
     expected: {
       current: 9,
       total: 18,
@@ -108,7 +112,7 @@ const testCases = [
   },
   {
     description: 'do not show pages between ellipsis and current page',
-    data: { currentPage: 9, totalItems: 86, itemsPerPage: 5, pagesToShow: 0 },
+    data: { currentPage: 9, totalItems: 86, itemsPerPage: 5, pagesToShow: 0, fixedLength: false },
     expected: {
       current: 9,
       total: 18,
@@ -123,6 +127,40 @@ const testCases = [
       ],
     },
   },
+  {
+    description: 'fixed length left',
+    data: { currentPage: 3, totalItems: 86, itemsPerPage: 5, pagesToShow: 2, fixedLength: true },
+    expected: {
+      current: 3,
+      total: 18,
+      isFirst: false,
+      isLast: false,
+      next: 4,
+      previous: 2,
+      items: 9,
+      ellipsis: [
+        { index: 1, value: false },
+        { index: 7, value: true },
+      ],
+    },
+  },
+  {
+    description: 'fixed length right',
+    data: { currentPage: 15, totalItems: 86, itemsPerPage: 5, pagesToShow: 2, fixedLength: true },
+    expected: {
+      current: 15,
+      total: 18,
+      isFirst: false,
+      isLast: false,
+      next: 16,
+      previous: 14,
+      items: 9,
+      ellipsis: [
+        { index: 1, value: true },
+        { index: 7, value: false },
+      ],
+    },
+  },
 ]
 
 function setTestData(data: PaginatonData) {
@@ -130,6 +168,7 @@ function setTestData(data: PaginatonData) {
   testData.totalItems.value = data.totalItems
   testData.itemsPerPage.value = data.itemsPerPage
   testData.pagesToShow.value = data.pagesToShow
+  testData.fixedLength.value = data.fixedLength
 }
 
 describe.each(testCases)('usePagination', ({ description, data, expected }) => {
