@@ -1,6 +1,6 @@
 # Changelog
 
-## [v1.1.0] - 2023-05-18
+## [1.1.0] - 2023-05-18
 
 ### Added
 
@@ -11,10 +11,10 @@
 
 - Set `vue` as peer dependency
 
-## [v1.0.0] - 2023-05-09
+## [1.0.0] - 2023-05-09
 
 - 🎉 _Initial release_
 
 [Unreleased]: https://github.com/lombervid/vueginate/compare/v1.1.0...main
-[v1.1.0]: https://github.com/lombervid/vueginate/compare/v1.0.0...v1.1.0
-[v1.0.0]: https://github.com/lombervid/vueginate/releases/tag/v1.0.0
+[1.1.0]: https://github.com/lombervid/vueginate/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/lombervid/vueginate/releases/tag/v1.0.0
