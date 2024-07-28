@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+### Fixed
+
+- Fix navigation buttons in the Safari browser ([#9](https://github.com/lombervid/vueginate/pull/9))
+
 ## [1.1.1] - 2023-05-18
 
 ### Fixed
